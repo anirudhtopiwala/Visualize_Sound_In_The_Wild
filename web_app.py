@@ -141,7 +141,7 @@ def load_image():
         img_mask = np.asarray(img_mask, dtype=np.uint8)
     else:
         # Empty mask.
-        img_mask = np.zeros(img_width, img_height, 3)
+        img_mask = np.zeros((img_width, img_height, 3), dtype=np.uint8)
 
     img_foreground, img_background = process_image(img_array, img_mask)
     return img, img_foreground, img_background
