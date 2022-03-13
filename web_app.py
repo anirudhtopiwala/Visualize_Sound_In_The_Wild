@@ -56,7 +56,7 @@ def process_image(img, img_mask):
     binary_mask = np.uint8(binary_mask * 255)
 
     # Sound variations will be added to image foreground.
-    img_foreground = cv2.bitwise_or(img_mask, img_mask, mask=binary_mask)
+    img_foreground = cv2.bitwise_or(img, img, mask=binary_mask)
     img_background = cv2.bitwise_or(img,
                                     img,
                                     mask=cv2.bitwise_not(binary_mask))
