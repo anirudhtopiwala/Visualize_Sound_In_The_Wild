@@ -11,7 +11,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 """
 A web application to visualize sound in images.
 """
@@ -27,6 +26,7 @@ import pydub
 import streamlit as st
 from PIL import Image
 from streamlit_webrtc import RTCConfiguration, WebRtcMode, webrtc_streamer
+from pytube import YouTube
 
 logger = logging.getLogger(__name__)
 
@@ -216,13 +216,22 @@ def get_sound(col1, col2, fps=60):
 def main():
     selected_box = st.sidebar.selectbox('Choose one of the following', (
         'Welcome',
-        'Visualize Sound',
+        'Real Time - Visualize Sound',
+        'YouTube Link - Visualize Sound',
     ))
 
     if selected_box == 'Welcome':
         welcome()
-    if selected_box == 'Visualize Sound':
+    else if selected_box == 'Visualize Sound':
         visualize_sound()
+    else if selected_box == 'YouTube Link - Visualize Sound':
+        visualize_youtube_video()
+
+
+def visualize_youtube_video():
+    st.header("Visualizing Sound !!!")
+    st.markdown("""A first of its kind visualization of sound on an image.""")
+
 
 
 def visualize_sound():
