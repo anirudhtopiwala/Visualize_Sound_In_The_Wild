@@ -216,15 +216,15 @@ def get_sound(col1, col2, fps=60):
 def main():
     selected_box = st.sidebar.selectbox('Choose one of the following', (
         'Welcome',
-        'Real Time - Visualize Sound',
-        'YouTube Link - Visualize Sound',
+        'Visualize Sound in Real Time',
+        'Visualize Sound - YouTube',
     ))
 
     if selected_box == 'Welcome':
         welcome()
-    else if selected_box == 'Visualize Sound':
+    elif selected_box == 'Visualize Sound in Real Time':
         visualize_sound()
-    else if selected_box == 'YouTube Link - Visualize Sound':
+    elif selected_box == 'Visualize Sound - YouTube':
         visualize_youtube_video()
 
 
