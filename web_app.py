@@ -231,15 +231,18 @@ def main():
 def visualize_youtube_video():
     st.header("Visualizing Sound !!!")
     st.markdown("""A first of its kind visualization of sound on an image.""")
-    link = "https://www.youtube.com/watch?v=724BgFjKM08&list=RDMM&index=4"
+    buff = io.BytesIO()
+    link = st.text_input('YouTube Link', 'https://www.youtube.com/watch?v=724BgFjKM08')
+    st.write(f"Using YouTube link: {link}. Extracting audio...")
     yt=YouTube(link)
-    strm= yt.streams.filter(only_audio=True, file_extension='mp4').first()
+    strm=yt.streams.filter(only_audio=True, file_extension='mp4').first()
+    write_autio = st.empty()
     if strm is not None:
-        buff = io.BytesIO()
+        buff.flush()
         strm.stream_to_buffer(buff)
         buff.seek(0)
         full_audio = pydub.AudioSegment.from_file(buff)
-        st.write(full_audio)
+        write_autio.write(full_audio)
 
 
 
