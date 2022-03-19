@@ -27,6 +27,8 @@ import streamlit as st
 from PIL import Image
 from streamlit_webrtc import RTCConfiguration, WebRtcMode, webrtc_streamer
 from pytube import YouTube
+from moviepy.editor import ImageClip, VideoClip, AudioFileClip, concatenate_videoclips
+import tempfile
 
 logger = logging.getLogger(__name__)
 
@@ -78,15 +80,37 @@ def process_image(img, img_mask):
 
     return img_foreground, img_background
 
+@st.cache
+def draw_horz_noise(img, amplitudes):
+    img_height, img_width, _  = img.shape
+    pos_x = 20
+    pos_y = img_height - 50
+    box_width_px = img_width / 4
+    box_height_px = img_height / 5
+    num_points = len(amplitudes)
+    step_size_in_x = box_width_px / num_points
+    step_size_in_y = box_height_px / 6
+    line_thickness = 2
+    color = (255, 255, 255)
+    for i in range(0, len(amplitudes) - 2):
+        point1 = (round(pos_x + (i * step_size_in_x)),
+                  round(pos_y -
+                        (amplitudes[i].item() * step_size_in_y)))
+        point2 = (round(pos_x + ((i + 1) * step_size_in_x)),
+                  round(pos_y -
+                        (amplitudes[i + 1].item() * step_size_in_y)))
+        cv2.line(img, point1, point2, color, thickness=line_thickness)
 
 @st.cache
-def encode_image(amplitudes_per_img_frame, img_foreground, img_background):
+def encode_image(amplitudes_per_img_frame, img_foreground, img_background, should_plot=False):
     max_val = max(amplitudes_per_img_frame, key=abs)
     max_val = np.clip(max_val, -0.3, 0.3)
     max_val = -max_val
     img_foreground_adjusted = adjust_brightness(img_foreground,
                                                 min(max_val + 0.7, 1))
     merged_image = img_foreground_adjusted + img_background
+    if should_plot:
+        draw_horz_noise(merged_image, amplitudes_per_img_frame)
     return np.asarray(merged_image, dtype=np.uint8)
 
 
@@ -227,22 +251,98 @@ def main():
     elif selected_box == 'Visualize Sound - YouTube':
         visualize_youtube_video()
 
+@st.cache(suppress_st_warning=True)
+def load_audio_from_link(link):
+    buff = io.BytesIO()
+    try:
+        yt=YouTube(link)
+    except VideoUnavailable as e:
+        return e
+    st.write("Extracting audio...")
+    strm=yt.streams.filter(only_audio=True, file_extension='mp4').first()
+    if strm is None:
+        return ValueError("Unable to load link.")
+
+    # Reset the buffer and get the audio.
+    buff.flush()
+    strm.stream_to_buffer(buff)
+    buff.seek(0)
+    full_audio = pydub.AudioSegment.from_file(buff)
+    mono_audio = full_audio.split_to_mono()[0]
+    return mono_audio
+
 
 def visualize_youtube_video():
     st.header("Visualizing Sound !!!")
     st.markdown("""A first of its kind visualization of sound on an image.""")
-    buff = io.BytesIO()
     link = st.text_input('YouTube Link', 'https://www.youtube.com/watch?v=724BgFjKM08')
-    st.write(f"Using YouTube link: {link}. Extracting audio...")
-    yt=YouTube(link)
-    strm=yt.streams.filter(only_audio=True, file_extension='mp4').first()
+    st.write(f"Using YouTube link: {link}.")
+    try:
+        audio = load_audio_from_link(link)
+    except:
+        st.warning("The video is unavailable please try a different link.")
+        st.stop()
+
+    # Get the time span of the audio and set the range selection sliders.
+    max_time_s = 20
+    durations_seconds = int(audio.duration_seconds)
+    start_time, end_time = st.select_slider(
+     'Select the time interval (s). Max time is 20s.',
+     options=range(durations_seconds),
+     value=(0, max_time_s))
+    audio_time = end_time - start_time
+    if audio_time < 0 or audio_time > max_time_s:
+        st.warning(f"Please reduce the selected range to less than {max_time_s}s.")
+        st.stop()
+
+    # Cut the aduio to the specified range.
     write_autio = st.empty()
-    if strm is not None:
-        buff.flush()
-        strm.stream_to_buffer(buff)
-        buff.seek(0)
-        full_audio = pydub.AudioSegment.from_file(buff)
-        write_autio.write(full_audio)
+    cut_audio = audio[start_time*1000:end_time*1000]
+
+    # Get image arrays from user.
+    pil_img, img_foreground, img_background = load_image()
+    if pil_img is None:
+        st.warning("Please upload an image or use an exisiting example.")
+        st.stop()
+
+
+    # Show the images
+    col1, col2 = st.columns(2)
+    with col1:
+        st.image(pil_img)
+    with col2:
+        encoded_image_st = st.empty()
+    # fig_st = st.empty()
+
+    # Update images using FPS:
+    fps = 60
+    chunk_ms = (1/fps) * 1000
+    chunks = pydub.utils.make_chunks(cut_audio,chunk_ms)
+
+    img_clips = []
+    for chunk in chunks:
+        # Dividing the ampltide by 10000 to get vaues in range [-1, 1]
+        sound_array = np.array(chunk.get_array_of_samples()) / 10000
+        img = encode_image(sound_array, img_foreground, img_background, True)
+        img_clips.append(ImageClip(img).set_duration(1/fps))
+
+    # Create video reader from moviepy
+    # Export the current audio clip to binary file.
+    with tempfile.NamedTemporaryFile("w+b", suffix=".wav") as f:
+        cut_audio.export(f.name, "wav")
+        audio_clip = AudioFileClip(f.name)
+        video_clip = concatenate_videoclips(img_clips, method="compose")
+        video_clip_with_audio =  video_clip.set_audio(audio_clip)
+
+        with tempfile.NamedTemporaryFile("w+b", suffix=".mp4") as video_writer:
+            video_clip_with_audio.write_videofile(video_writer.name, fps=fps)
+            encoded_image_st.video(video_writer.name)
+
+    st.write("Here is the audio file for easy download...")
+    write_autio.write(cut_audio)
+
+
+
 
 
 
