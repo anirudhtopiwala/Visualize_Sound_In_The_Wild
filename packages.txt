@@ -1,2 +1,3 @@
 libav-tools
 libavcodec-extra
+ffmpeg
