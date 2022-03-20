@@ -29,6 +29,8 @@ from streamlit_webrtc import RTCConfiguration, WebRtcMode, webrtc_streamer
 from pytube import YouTube
 from moviepy.editor import ImageClip, VideoClip, AudioFileClip, concatenate_videoclips
 import tempfile
+import multiprocessing
+
 
 logger = logging.getLogger(__name__)
 
@@ -66,7 +68,7 @@ def process_image(img, img_mask):
     # Add Sign.
     sign_img = cv2.imread("files/sign.png", cv2.IMREAD_GRAYSCALE)
     sign_img = ((sign_img > 0) * 255).astype(np.uint8)
-    scale = 0.25
+    scale = 0.2
     adjusted_height = int(sign_img.shape[0] * scale)
     adjusted_width = int(sign_img.shape[1] * scale)
     resized_sign_img = cv2.resize(sign_img, (adjusted_width, adjusted_height))
@@ -155,7 +157,7 @@ def load_image():
 
     # Resize image if its too large.
     img_width, img_height = img.size
-    while img_width > 1000 or img_height > 1000:
+    while img_width > 700 or img_height > 700:
         img_width = int(img_width / 2)
         img_height = int(img_height / 2)
     img = img.resize((img_width, img_height))
@@ -274,7 +276,7 @@ def load_audio_from_link(link):
 def visualize_youtube_video():
     st.header("Visualizing Sound !!!")
     st.markdown("""A first of its kind visualization of sound on an image.""")
-    link = st.text_input('YouTube Link', 'https://www.youtube.com/watch?v=7wtfhZwyrcc')
+    link = st.text_input('YouTube Link', 'https://www.youtube.com/watch?v=Roi4TG6ZvKk')
     st.write(f"Using YouTube link: {link}.")
     try:
         audio = load_audio_from_link(link)
@@ -283,10 +285,10 @@ def visualize_youtube_video():
         st.stop()
 
     # Get the time span of the audio and set the range selection sliders.
-    max_time_s = 20
+    max_time_s = 10
     durations_seconds = int(audio.duration_seconds)
     start_time, end_time = st.select_slider(
-     f'Woahh found {durations_seconds} seconds of audio!!! Please select a time interval within 20s.',
+     f'Woahh found {durations_seconds} seconds of audio!!! Please select a time interval within {max_time_s} s.',
      options=range(durations_seconds),
      value=(0, max_time_s))
     audio_time = end_time - start_time
@@ -330,7 +332,7 @@ def visualize_youtube_video():
                 audio_clip = AudioFileClip(audio_writer.name)
                 video_clip = concatenate_videoclips(img_clips, method="compose")
                 video_clip_with_audio =  video_clip.set_audio(audio_clip)
-                video_clip_with_audio.write_videofile(video_writer.name, fps=fps)
+                video_clip_with_audio.write_videofile(video_writer.name, fps=fps,threads=multiprocessing.cpu_count())
 
         # Show the images
         col1, col2 = st.columns(2)
