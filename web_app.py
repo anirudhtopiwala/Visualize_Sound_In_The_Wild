@@ -123,8 +123,8 @@ def encode_image(amplitudes_per_img_frame, img_foreground, img_background, shoul
     max_val = np.clip(max_val, -0.3, 0.3)
     # Negative wave usually has a stronger amplitude from experimenting.
     max_val = -max_val
-    img_foreground_adjusted = adjust_brightness(img_foreground,max_val + 0.7)
-    merged_image = img_foreground_adjusted + img_background
+    img_foreground_adjusted = adjust_brightness(img_foreground, max_val + 0.7)
+    merged_image = np.add(img_foreground_adjusted, img_background)
     if should_plot:
         draw_horz_sound(merged_image, amplitudes_per_img_frame)
     return np.asarray(merged_image, dtype=np.uint8)
@@ -198,7 +198,7 @@ def load_image():
 
     return img, img_mask
 
-def get_sound(col1, col2, fps=60):
+def get_sound(col1, col2):
     samplerate = 48000
     # Num Channels.
     num_channels = 1
@@ -276,7 +276,7 @@ def main():
     elif selected_box == 'Visualize Sound - YouTube':
         visualize_youtube_video()
 
-@st.cache(suppress_st_warning=True)
+@st.cache(suppress_st_warning=True, ttl= 120)
 def load_audio_from_link(link):
     try:
         yt=YouTube(link)
