@@ -55,35 +55,47 @@ def adjust_brightness(img, value):
 
 @st.cache
 def process_image(img, img_mask):
-    height, width, _ = img.shape
-    binary_mask = cv2.cvtColor(img_mask, cv2.COLOR_RGB2GRAY) > 0
-    binary_mask = np.uint8(binary_mask * 255)
+    assert(img is not None)
+    # Resize image if its too large.
+    img_height, img_width, channels = img.shape
+    while img_width > 700 or img_height > 700:
+        img_width = int(img_width / 2)
+        img_height = int(img_height / 2)
 
-    # Sound variations will be added to image foreground.
-    img_foreground = cv2.bitwise_or(img, img, mask=binary_mask)
-    img_background = cv2.bitwise_or(img,
-                                    img,
-                                    mask=cv2.bitwise_not(binary_mask))
+    img = cv2.resize(img, (img_width,img_height))
+    if img_mask is None:
+        # If no mask is given, the given image becomes image foreground, as thats where the sound is encoded.
+        img_foreground = img
+        img_background = np.zeros((img_height, img_width, 3), dtype=np.uint8)
+    else:
+        img_mask = cv2.resize(img_mask, (img_width,img_height))
+        # Generate a binary image from the RGB mask.
+        binary_mask = (cv2.cvtColor(img_mask, cv2.COLOR_RGB2GRAY) > 0)
+        binary_mask = np.uint8(binary_mask * 255)
+        # Use the mask to generate a foreground and backgrund image. Sound will be encoded in the image foreground.
+        img_foreground = cv2.bitwise_or(img, img, mask=binary_mask)
+        img_background = cv2.bitwise_or(img,img,mask=cv2.bitwise_not(binary_mask))
+
 
     # Add Sign.
     sign_img = cv2.imread("files/sign.png", cv2.IMREAD_GRAYSCALE)
     sign_img = ((sign_img > 0) * 255).astype(np.uint8)
+    # A scale of 0.2 usually works when working with images less than 700px rnage.
     scale = 0.2
     adjusted_height = int(sign_img.shape[0] * scale)
     adjusted_width = int(sign_img.shape[1] * scale)
     resized_sign_img = cv2.resize(sign_img, (adjusted_width, adjusted_height))
-    empty_img = np.zeros((height, width), dtype=np.uint8)
-    empty_img[height - adjusted_height - 10:height - 10,
-              width - adjusted_width - 10:width - 10] = resized_sign_img
+    binary_sign_img = np.zeros((img_height, img_width), dtype=np.uint8)
+    binary_sign_img[img_height - adjusted_height - 10:img_height - 10,
+              img_width - adjusted_width - 10:img_width - 10] = resized_sign_img
     #  Get rgb image.
-    empty_img = np.stack((empty_img, empty_img, empty_img), axis=2)
+    binary_sign_img = np.stack((binary_sign_img, binary_sign_img, binary_sign_img), axis=2)
     # Watermark the sign.
-    cv2.addWeighted(img_background, 1.0, empty_img, 0.5, 0, img_background)
-
-    return img_foreground, img_background
+    cv2.addWeighted(img_background, 1.0, binary_sign_img, 0.5, 0, img_background)
+    return img, img_foreground, img_background
 
 @st.cache
-def draw_horz_noise(img, amplitudes):
+def draw_horz_sound(img, amplitudes):
     img_height, img_width, _  = img.shape
     pos_x = 20
     pos_y = img_height - 50
@@ -112,9 +124,8 @@ def encode_image(amplitudes_per_img_frame, img_foreground, img_background, shoul
                                                 min(max_val + 0.7, 1))
     merged_image = img_foreground_adjusted + img_background
     if should_plot:
-        draw_horz_noise(merged_image, amplitudes_per_img_frame)
+        draw_horz_sound(merged_image, amplitudes_per_img_frame)
     return np.asarray(merged_image, dtype=np.uint8)
-
 
 def load_image():
     st.sidebar.markdown("---")
@@ -123,12 +134,6 @@ def load_image():
     img = None
     img_mask = None
 
-    if st.sidebar.button("Use an existing example"):
-        # Choose a random sample image.
-        random_index = random.randint(0, len(sample_images) - 1)
-        img = Image.open(sample_images[random_index])
-        img_mask = Image.open(sample_images_mask[random_index])
-
     # Upload an Image or use the defaults.
     uploaded_img_file = st.sidebar.file_uploader(
         "Choose a File",
@@ -136,43 +141,60 @@ def load_image():
     )
     # Optionally upload image mask to restrict area in which sound is visualized.
     uploaded_img_mask = st.sidebar.file_uploader(
-        "Optionally upload a mask to restrict area in which sound is visualized. (Size should match that of input image)",
+        "Optionally upload an image mask to restrict the area in which sound is visualized. (Size should match that of input image)",
         type=["png", "jpg", "jpeg"],
     )
 
-    if uploaded_img_file is not None:
-        img = Image.open(io.BytesIO(uploaded_img_file.getvalue()))
+    if st.sidebar.button("Use an existing example"):
+        # Choose a random sample image.
+        st.sidebar.write("Click again to try out a different image.")
+        random_index = random.randint(0, len(sample_images) - 1)
+        img = Image.open(sample_images[random_index])
+        img_mask = Image.open(sample_images_mask[random_index])
+    else:
+        if uploaded_img_file is not None:
+            img = Image.open(io.BytesIO(uploaded_img_file.getvalue()))
+            img = img.convert('RGB')
 
-    if uploaded_img_mask is not None:
-        img_mask = Image.open(io.BytesIO(uploaded_img_mask.getvalue()))
+        if uploaded_img_mask is not None:
+            img_mask = Image.open(io.BytesIO(uploaded_img_mask.getvalue()))
+            img_mask = img_mask.convert('RGB')
 
-    if img and img_mask and img.size != img_mask.size:
-        st.warning(
-            f"Image mask of size {img_mask.size} does not macth input img size {img.size}. Please upload mask that is the same size as image."
-        )
+        if img and img_mask and img.size != img_mask.size:
+            st.warning(
+                f"Image mask of size {img_mask.size} does not macth input img size {img.size}. Please upload mask that is the same size as image."
+            )
+            st.stop()
+
+    if img is None and img_mask:
+        st.warning("Image mask only works with an uploaded image. Please upload an image using the sidebar or use an existing example.")
+        st.stop()
+    elif img is None:
+        st.warning("Please use the sidebar to upload an image or use an exisiting example. The sidebar can be expanded from the top left corner.")
         st.stop()
 
-    if not img:
-        return None, None, None
+    # Conver PIL image to array.
+    img = np.asarray(img, dtype=np.uint8)
 
-    # Resize image if its too large.
-    img_width, img_height = img.size
-    while img_width > 700 or img_height > 700:
-        img_width = int(img_width / 2)
-        img_height = int(img_height / 2)
-    img = img.resize((img_width, img_height))
-    img_array = np.asarray(img, dtype=np.uint8)
+    # Check that img and img_mask are rgb images.
+    if img is not None and img.shape[2] !=3:
+        st.warning(f"Image has to be an RGB image. Uploaded image has {img.shape[2]} channels. Please upload another image or use an existing example.")
+        st.stop()
+
     if img_mask:
-        img_mask = img_mask.resize((img_width, img_height))
         img_mask = np.asarray(img_mask, dtype=np.uint8)
-    else:
-        # Empty mask.
-        img_mask = np.zeros((img_width, img_height, 3), dtype=np.uint8)
+        if img_mask.shape[2] !=3:
+            st.warning(f"Image mask has to be an RGB image. Uploaded image has {img.shape[2]} channels. If you have a binary image please concatenate the channels to make it RGB.")
+            st.stop()
 
-    img_foreground, img_background = process_image(img_array, img_mask)
+    # Show the images in sidebar.
     st.sidebar.write("Image loaded.")
-    return img, img_foreground, img_background
+    if img is not None:
+        st.sidebar.image(img)
+    if img_mask is not None:
+        st.sidebar.image(img_mask)
 
+    return img, img_mask
 
 def get_sound(col1, col2, fps=60):
     samplerate = 48000
@@ -194,16 +216,14 @@ def get_sound(col1, col2, fps=60):
         return
 
     # Get image arrays from user.
-    pil_img, img_foreground, img_background = load_image()
-    if pil_img is None:
-        st.warning("Please upload an image or use an exisiting example.")
-        st.stop()
+    img, img_mask = load_image()
+    resized_img, img_foreground, img_background = process_image(img, img_mask)
 
     status_indicator = st.empty()
     status_indicator.write("Running. Say something!")
 
     with col1:
-        st.image(pil_img)
+        st.image(resized_img)
     with col2:
         encoded_image_st = st.empty()
 
@@ -273,11 +293,17 @@ def load_audio_from_link(link):
     return mono_audio
 
 
+def get_youtube_link():
+    yt_audios = {"Imagine Dragons: Believer" : "https://www.youtube.com/watch?v=Roi4TG6ZvKk", "You are my Sunshine" :"https://www.youtube.com/watch?v=dh7LJDHFaqA", "Doobey" :"https://www.youtube.com/watch?v=6eGCi4SVy94","Lindsey Stirling - Crystallize":"https://www.youtube.com/watch?v=aHjpOzsQ9YI"}
+    select_box_link = st.selectbox("Choose a song or use your own link.", yt_audios.keys())
+    link = st.text_input('YouTube Link', yt_audios[select_box_link])
+    st.write(f"Using YouTube link: {link}.")
+    return link
+
 def visualize_youtube_video():
     st.header("Visualizing Sound !!!")
     st.markdown("""A first of its kind visualization of sound on an image.""")
-    link = st.text_input('YouTube Link', 'https://www.youtube.com/watch?v=Roi4TG6ZvKk')
-    st.write(f"Using YouTube link: {link}.")
+    link = get_youtube_link()
     try:
         audio = load_audio_from_link(link)
     except:
@@ -300,10 +326,8 @@ def visualize_youtube_video():
     fps = st.radio("Available frame rates (frames/second) for rendering the video.",(30, 60, 120, 240), index=1)
 
     # Get image arrays from user.
-    pil_img, img_foreground, img_background = load_image()
-    if pil_img is None:
-        st.warning("Please upload an image or use an exisiting example.")
-        st.stop()
+    img, img_mask = load_image()
+    resized_img, img_foreground, img_background = process_image(img, img_mask)
 
     # Cut the aduio to the specified range.
     cut_audio = audio[start_time*1000:end_time*1000]
@@ -337,20 +361,12 @@ def visualize_youtube_video():
         # Show the images
         col1, col2 = st.columns(2)
         with col1:
-            st.image(pil_img)
+            st.image(resized_img)
         with col2:
             st.video(video_writer.name)
 
     st.write("Here is the entire audio for you to downlaod.")
     st.write(audio)
-
-
-
-
-
-
-
-
 
 
 def visualize_sound():
