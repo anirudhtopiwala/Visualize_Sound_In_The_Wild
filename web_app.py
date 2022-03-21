@@ -117,11 +117,13 @@ def draw_horz_sound(img, amplitudes):
 
 @st.cache
 def encode_image(amplitudes_per_img_frame, img_foreground, img_background, should_plot=False):
+    # Max amplitude represents maximum deviation of brightness.
     max_val = max(amplitudes_per_img_frame, key=abs)
+    # This is not usally required, although clipping to remove noise.
     max_val = np.clip(max_val, -0.3, 0.3)
+    # Negative wave usually has a stronger amplitude from experimenting.
     max_val = -max_val
-    img_foreground_adjusted = adjust_brightness(img_foreground,
-                                                min(max_val + 0.7, 1))
+    img_foreground_adjusted = adjust_brightness(img_foreground,max_val + 0.7)
     merged_image = img_foreground_adjusted + img_background
     if should_plot:
         draw_horz_sound(merged_image, amplitudes_per_img_frame)
