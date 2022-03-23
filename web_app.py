@@ -45,12 +45,11 @@ RTC_CONFIGURATION = RTCConfiguration(
 
 @st.cache
 def adjust_brightness(img, value):
-    hsv_img = cv2.cvtColor(img, cv2.COLOR_RGB2HSV)
-    hsv_img = hsv_img.astype(np.float32)
-    hsv_img /= 255
-    hsv_img[:, :, 2] = hsv_img[:, :, 2] * value
-    hsv_img = np.uint8(hsv_img * 255)
-    return cv2.cvtColor(hsv_img, cv2.COLOR_HSV2RGB)
+    img = cv2.cvtColor(img, cv2.COLOR_RGB2HSV)
+    img = img.astype(np.float32)
+    img[:, :, 2] *= value
+    img = np.uint8(img)
+    return cv2.cvtColor(img, cv2.COLOR_HSV2RGB)
 
 
 @st.cache
@@ -58,7 +57,7 @@ def process_image(img, img_mask):
     assert(img is not None)
     # Resize image if its too large.
     img_height, img_width, channels = img.shape
-    while img_width > 700 or img_height > 700:
+    while img_width > 500 or img_height > 500:
         img_width = int(img_width / 2)
         img_height = int(img_height / 2)
 
@@ -80,8 +79,8 @@ def process_image(img, img_mask):
     # Add Sign.
     sign_img = cv2.imread("files/sign.png", cv2.IMREAD_GRAYSCALE)
     sign_img = ((sign_img > 0) * 255).astype(np.uint8)
-    # A scale of 0.2 usually works when working with images less than 700px rnage.
-    scale = 0.2
+    # A scale of 0.15 usually works when working with images less than 500px rnage.
+    scale = 0.15
     adjusted_height = int(sign_img.shape[0] * scale)
     adjusted_width = int(sign_img.shape[1] * scale)
     resized_sign_img = cv2.resize(sign_img, (adjusted_width, adjusted_height))
@@ -123,8 +122,8 @@ def encode_image(amplitudes_per_img_frame, img_foreground, img_background, shoul
     max_val = np.clip(max_val, -0.3, 0.3)
     # Negative wave usually has a stronger amplitude from experimenting.
     max_val = -max_val
-    img_foreground_adjusted = adjust_brightness(img_foreground, max_val + 0.7)
-    merged_image = np.add(img_foreground_adjusted, img_background)
+    img_foreground = adjust_brightness(img_foreground, max_val + 0.7)
+    merged_image = np.add(img_foreground, img_background)
     if should_plot:
         draw_horz_sound(merged_image, amplitudes_per_img_frame)
     return np.asarray(merged_image, dtype=np.uint8)
