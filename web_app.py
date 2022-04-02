@@ -16,7 +16,9 @@ A web application to visualize sound in images.
 """
 import io
 import logging
+import multiprocessing
 import random
+import tempfile
 
 import altair as alt
 import cv2
@@ -24,13 +26,11 @@ import numpy as np
 import pandas as pd
 import pydub
 import streamlit as st
+from moviepy.editor import (AudioFileClip, ImageClip, VideoClip,
+                            concatenate_videoclips)
 from PIL import Image
-from streamlit_webrtc import RTCConfiguration, WebRtcMode, webrtc_streamer
 from pytube import YouTube
-from moviepy.editor import ImageClip, VideoClip, AudioFileClip, concatenate_videoclips
-import tempfile
-import multiprocessing
-
+from streamlit_webrtc import RTCConfiguration, WebRtcMode, webrtc_streamer
 
 logger = logging.getLogger(__name__)
 
@@ -43,7 +43,6 @@ RTC_CONFIGURATION = RTCConfiguration(
     }]})
 
 
-@st.cache
 def adjust_brightness(img, value):
     img = cv2.cvtColor(img, cv2.COLOR_RGB2HSV)
     img = img.astype(np.float32)
@@ -93,7 +92,6 @@ def process_image(img, img_mask):
     cv2.addWeighted(img_background, 1.0, binary_sign_img, 0.5, 0, img_background)
     return img, img_foreground, img_background
 
-@st.cache
 def draw_horz_sound(img, amplitudes):
     img_height, img_width, _  = img.shape
     pos_x = 20
@@ -114,7 +112,6 @@ def draw_horz_sound(img, amplitudes):
                         (amplitudes[i + 1].item() * step_size_in_y)))
         cv2.line(img, point1, point2, color, thickness=line_thickness)
 
-@st.cache
 def encode_image(amplitudes_per_img_frame, img_foreground, img_background, should_plot=False):
     # Max amplitude represents maximum deviation of brightness.
     max_val = max(amplitudes_per_img_frame, key=abs)
