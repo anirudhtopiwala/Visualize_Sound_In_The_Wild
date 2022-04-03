@@ -189,10 +189,13 @@ def load_image():
             st.stop()
 
     # Show the images in sidebar.
-    st.sidebar.write("Image loaded.")
+    st.sidebar.write("Image loaded successfully.")
+
     if img is not None:
+        st.sidebar.write("Main Image")
         st.sidebar.image(img)
     if img_mask is not None:
+        st.sidebar.write("Image Mask")
         st.sidebar.image(img_mask)
 
     return img, img_mask
