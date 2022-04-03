@@ -56,9 +56,12 @@ def process_image(img, img_mask):
     assert(img is not None)
     # Resize image if its too large.
     img_height, img_width, channels = img.shape
-    while img_width > 500 or img_height > 500:
-        img_width = int(img_width / 2)
-        img_height = int(img_height / 2)
+    max_size = 500
+    while img_width > max_size or img_height > max_size:
+        img_width = img_width / 2
+        img_height =img_height / 2
+    img_width = int(img_width)
+    img_height = int(img_height)
 
     img = cv2.resize(img, (img_width,img_height))
     if img_mask is None:
