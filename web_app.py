@@ -296,7 +296,7 @@ def visualize_youtube_video():
 
     st.write("Try out different youtube videos to see how a shrill/coarse or loud/quite note affects the generated visualization.")
     st.subheader("Extract Audio from YouTube Video")
-    st.write("This app also double as a way to extract audio from any YouTube video. So here is the complete audio for you to download...")
+    st.write("This app also doubles as a way to extract audio from any YouTube video. So here is the complete audio for you to download...")
     st.warning("Audio may be subject to copyright.")
     st.write(audio)
 
