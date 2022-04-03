@@ -227,17 +227,18 @@ def get_youtube_link():
     return link
 
 def visualize_youtube_video():
-    st.header("Visualizing Sound !!!")
-    st.markdown("""A first of its kind visualization of sound on an image.""")
+    st.header("Visualizing Sound Using Audio from YouTube")
+    st.write("""The app takes a YouTube video as a link, extracts the audio for the given time interval and renders the video by visualizing sound in the image of your choice.""")
+    st.write("""Feel free to select an option from the dropdown menu for a quick demo or paste a yoututbe link in the textbox below.""")
     link = get_youtube_link()
     try:
         audio = load_audio_from_link(link)
     except:
-        st.warning("The video is unavailable please try a different link.")
+        st.warning("The video is unavailable, please try reloading or using a different link. If the issue persists, try running the [app locally](https://github.com/anirudhtopiwala/visualize_sound_webapp)")
         st.stop()
 
     # Get the time span of the audio and set the range selection sliders.
-    max_time_s = 10
+    max_time_s = 15
     durations_seconds = int(audio.duration_seconds)
     start_time, end_time = st.select_slider(
      f'Woahh found {durations_seconds} seconds of audio!!! Please select a time interval within {max_time_s} s.',
@@ -250,6 +251,8 @@ def visualize_youtube_video():
 
     # Set the frame rate for the video.
     fps = st.radio("Available frame rates (frames/second) for rendering the video.",(30, 60, 120, 240), index=1)
+    st.write("A higher frame rate allows visualizing more amplitudes and therefore would result in more fluctuations in the image, which is fun to see.")
+    st.write("Read more on how this works on my blog post ** *Visualizing Sound In the Wild* ** [![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/p/b500657b0d85/edit)")
 
     # Get image arrays from user.
     img, img_mask = load_image()
@@ -257,7 +260,7 @@ def visualize_youtube_video():
 
     # Cut the aduio to the specified range.
     cut_audio = audio[start_time*1000:end_time*1000]
-    st.write("Give the audio a listen while we get the visualization ready...")
+    st.write("*Give the audio a listen while we get the visualization ready...*")
     st.write(cut_audio)
 
     # Temp file for writing the final video.
@@ -291,8 +294,15 @@ def visualize_youtube_video():
         with col2:
             st.video(video_writer.name)
 
-    st.write("Here is the entire audio for you to downlaod.")
+    st.write("Try out different youtube videos to see how a shrill/coarse or loud/quite note affects the generated visualization.")
+    st.subheader("Extract Audio from YouTube Video")
+    st.write("This app also double as a way to extract audio from any YouTube video. So here is the complete audio for you to download...")
+    st.warning("Audio may be subject to copyright.")
     st.write(audio)
+
+    # Contact Me
+    st.markdown("### Contact Me")
+    st.markdown("[Anirudh Topiwala](https://anirudhtopiwala.com/) [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/anirudhtopiwala) [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/anirudhtopiwala/) [![Twitter](https://img.shields.io/badge/<handle>-%231DA1F2.svg?style=for-the-badge&logo=Twitter&logoColor=white)](https://twitter.com/TopiwalaAnirudh)")
 
 
 def visualize_sound_in_realtime():
