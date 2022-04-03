@@ -34,8 +34,8 @@ from streamlit_webrtc import RTCConfiguration, WebRtcMode, webrtc_streamer
 
 logger = logging.getLogger(__name__)
 
-sample_images = ["files/trees.jpg", "files/waterfall_orig.jpg"]
-sample_images_mask = ["files/trees_mask.png", "files/waterfall_mask.png"]
+sample_images = ["files/trees.jpg", "files/waterfall_orig.jpg", "files/seattle_wheel.jpg" ]
+sample_images_mask = ["files/trees_mask.png", "files/waterfall_mask.png", "files/seattle_wheel_mask.png"]
 
 RTC_CONFIGURATION = RTCConfiguration(
     {"iceServers": [{
@@ -56,7 +56,7 @@ def process_image(img, img_mask):
     assert(img is not None)
     # Resize image if its too large.
     img_height, img_width, channels = img.shape
-    max_size = 500
+    max_size = 800
     while img_width > max_size or img_height > max_size:
         img_width = img_width / 2
         img_height =img_height / 2
@@ -381,15 +381,42 @@ def visualize_sound():
 
 
 def welcome():
-
-    st.title("Visualizing Sound !!!")
+    st.title("Visualizing Sound In The Wild")
     st.subheader('A simple app that lets you visualize sound in an image.')
 
-    # Play an example !!!
-    st.subheader('A day in the forest...')
-    video_file = open('files/tree_with_sound.mp4', 'rb')
-    video_bytes = video_file.read()
-    st.video(video_bytes)
+    st.write("What if you could capture sound in an image? What if you could add another dimension to a still photograph?"
+    " What if you can make taking pictures more tangible?")
+    st.markdown("This is what this projects aims to do. More about how this is done can be found on my blog post Visualizing Sound in the Wild [![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/p/b500657b0d85/edit)")
+    st.markdown(
+        """
+        The app supports two methods of visualizing sound:
+        * Visualizing Sound in Real Time - Use your own voice to visualize sound.
+        * Visualizing Sound Youtube - Use audio from any YouTube video to visualize sound.
+        """)
+    st.write("These options can be selected in the sidebar which is avaible in the top left corner of the screen.")
+
+    # Play examples !!!
+    st.subheader("Examples in the Wild")
+    # Hiking Among The Trees
+    st.markdown("#### Hiking Among The Trees")
+    st.markdown("*An early morning hike on the Mirror Lake trail in the woods of Mount Hood, Seattle*")
+    st.video("https://youtu.be/XUllsgl0diw")
+
+    # The Mighty Multnomah Falls
+    st.markdown("#### The Mighty Multnomah Falls")
+    st.markdown("*Being the tallest waterfall in Oregon, listen in on 923 gallons of water falling over a height of 620 feet every second.*")
+    st.video("https://youtu.be/AqIaOgdsWUo")
+
+    # Seattle Great Wheel
+    st.markdown("#### Seattle Great Wheel")
+    st.markdown("*A 360 view of Seattle, the ferry wheel gives outstanding views of the city at 60ft directly above the Puget Sound. Listen in on how the sounds from a carousel next to the wheel lights up the colors in the night.*")
+    st.video("https://youtu.be/kIUXiqmtZqg")
+
+
+    # Contact Me
+    st.markdown("### Contact Me")
+    st.markdown("[Anirudh Topiwala](https://anirudhtopiwala.com/) [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/anirudhtopiwala) [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/anirudhtopiwala/) [![Twitter](https://img.shields.io/badge/<handle>-%231DA1F2.svg?style=for-the-badge&logo=Twitter&logoColor=white)](https://twitter.com/TopiwalaAnirudh)")
+
 
 
 if __name__ == "__main__":
