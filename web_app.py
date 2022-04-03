@@ -56,7 +56,7 @@ def process_image(img, img_mask):
     assert(img is not None)
     # Resize image if its too large.
     img_height, img_width, channels = img.shape
-    max_size = 800
+    max_size = 700
     while img_width > max_size or img_height > max_size:
         img_width = img_width / 2
         img_height =img_height / 2
@@ -238,7 +238,7 @@ def visualize_youtube_video():
         st.stop()
 
     # Get the time span of the audio and set the range selection sliders.
-    max_time_s = 15
+    max_time_s = 10
     durations_seconds = int(audio.duration_seconds)
     start_time, end_time = st.select_slider(
      f'Woahh found {durations_seconds} seconds of audio!!! Please select a time interval within {max_time_s} s.',
