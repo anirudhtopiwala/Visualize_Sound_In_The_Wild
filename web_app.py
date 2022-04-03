@@ -197,84 +197,6 @@ def load_image():
 
     return img, img_mask
 
-def get_sound(col1, col2):
-    samplerate = 48000
-    # Num Channels.
-    num_channels = 1
-    webrtc_ctx = webrtc_streamer(
-        key="visualize-sound",
-        mode=WebRtcMode.SENDONLY,
-        audio_receiver_size=samplerate,
-        rtc_configuration=RTC_CONFIGURATION,
-        media_stream_constraints={
-            "video": False,
-            "audio": True
-        },
-        async_processing=True,
-    )
-
-    if not webrtc_ctx.state.playing:
-        return
-
-    # Get image arrays from user.
-    img, img_mask = load_image()
-    resized_img, img_foreground, img_background = process_image(img, img_mask)
-
-    status_indicator = st.empty()
-    status_indicator.write("Running. Say something!")
-
-    with col1:
-        st.image(resized_img)
-    with col2:
-        encoded_image_st = st.empty()
-
-    fig_st = st.empty()
-    while True:
-        try:
-            audio_frames = webrtc_ctx.audio_receiver.get_frames(timeout=1)
-        except:
-            status_indicator.write(
-                "No frame arrived. Please check audio permissions and refresh."
-            )
-            return
-
-        sound = pydub.AudioSegment.empty()
-        for audio_frame in audio_frames:
-            sound += pydub.AudioSegment(
-                data=audio_frame.to_ndarray().tobytes(),
-                sample_width=audio_frame.format.bytes,
-                frame_rate=audio_frame.sample_rate,
-                channels=num_channels,
-            )
-        # Dividing the ampltide by 10000 to get vaues in range [-1, 1]
-        sound_array = np.array(sound.get_array_of_samples()) / 10000
-
-        encoded_image_st.image(
-            encode_image(sound_array, img_foreground, img_background))
-
-        times = range(len(sound_array))
-        source = pd.DataFrame({'Amplitude': sound_array, 'Time': times})
-
-        fig_st.altair_chart(alt.Chart(source).mark_line().encode(
-            alt.Y("Amplitude", scale=alt.Scale(domain=(-1.5, 1.5))),
-            alt.X("Time", axis=None)),
-                            use_container_width=True)
-
-
-def main():
-    selected_box = st.sidebar.selectbox('Choose one of the following', (
-        'Welcome',
-        'Visualize Sound in Real Time',
-        'Visualize Sound - YouTube',
-    ))
-
-    if selected_box == 'Welcome':
-        welcome()
-    elif selected_box == 'Visualize Sound in Real Time':
-        visualize_sound()
-    elif selected_box == 'Visualize Sound - YouTube':
-        visualize_youtube_video()
-
 @st.cache(suppress_st_warning=True, ttl= 120)
 def load_audio_from_link(link):
     try:
@@ -370,14 +292,85 @@ def visualize_youtube_video():
     st.write(audio)
 
 
-def visualize_sound():
-    st.header("Visualizing Sound !!!")
-    st.markdown("""A first of its kind visualization of sound on an image.""")
+def visualize_sound_in_realtime():
+    st.header("Visualizing Sound In Real Time")
+    st.markdown("""Viusalize your own voice on a picture of your liking.""")
 
     # Plot sound and see its effects on an image.
-    # Show the original image, image with effects and sound plot.
+    samplerate = 48000 # Default samplerate for most microphones.
+    # Visualization is only possible on mono audio.
+    num_channels = 1
+    #  Set up the webrtc stramer to get audio.
+    webrtc_ctx = webrtc_streamer(
+        key="visualize-sound",
+        mode=WebRtcMode.SENDONLY,
+        audio_receiver_size=samplerate,
+        rtc_configuration=RTC_CONFIGURATION,
+        media_stream_constraints={
+            "video": False,
+            "audio": True
+        },
+        async_processing=True,
+    )
+
+    if not webrtc_ctx.state.playing:
+        return
+
+    # Get image arrays from user.
+    img, img_mask = load_image()
+    resized_img, img_foreground, img_background = process_image(img, img_mask)
+
+    # Setting up the page.
+    status_indicator = st.empty()
+    status_indicator.write("Running. Say something!")
+    st.warning("The app is known to freeze up when many people are using the app, if the images are not being updated in realtime consider reloading the app. Or select the option to visualize audio from a YouTube video in the sidebar. Another option is to run the [app locally](https://github.com/anirudhtopiwala/visualize_sound_webapp).")
+    st.write("Notice how when you speak loudlly the higher amplitude sounds waves generates a very bright or dark image.")
+    st.write("Now try whistling, the higher frequency of the whistling sound causes an increase in he rate of fluctuations of the brightness.")
+    st.write("Read more on how this works on my blog post ** *Visualizing Sound In the Wild* ** [![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/p/b500657b0d85/edit)")
+
     col1, col2 = st.columns(2)
-    get_sound(col1, col2)
+    with col1:
+        st.image(resized_img)
+    with col2:
+        encoded_image_st = st.empty()
+    st.markdown("<h5 style='text-align: center;'>Amplitude vs Time</h5>", unsafe_allow_html=True)
+    fig_st = st.empty()
+    st.write("Try out different examples by clicking on ** *'Use an existing example'* ** in the sidebar. Or upload your own image.")
+
+    # Contact Me
+    st.markdown("### Contact Me")
+    st.markdown("[Anirudh Topiwala](https://anirudhtopiwala.com/) [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/anirudhtopiwala) [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/anirudhtopiwala/) [![Twitter](https://img.shields.io/badge/<handle>-%231DA1F2.svg?style=for-the-badge&logo=Twitter&logoColor=white)](https://twitter.com/TopiwalaAnirudh)")
+
+    while True:
+        try:
+            audio_frames = webrtc_ctx.audio_receiver.get_frames(timeout=1)
+        except:
+            status_indicator.write(
+                "No frame arrived. Please check audio permissions and reload the page."
+            )
+            return
+
+        sound = pydub.AudioSegment.empty()
+        for audio_frame in audio_frames:
+            sound += pydub.AudioSegment(
+                data=audio_frame.to_ndarray().tobytes(),
+                sample_width=audio_frame.format.bytes,
+                frame_rate=audio_frame.sample_rate,
+                channels=num_channels,
+            )
+        # Dividing the ampltide by 10000 to get vaues in range [-1, 1]
+        sound_array = np.array(sound.get_array_of_samples()) / 10000
+
+        encoded_image_st.image(
+            encode_image(sound_array, img_foreground, img_background))
+
+        times = range(len(sound_array))
+        amplitude_df = pd.DataFrame({'Amplitude': sound_array, 'Time': times})
+
+        fig_st.altair_chart(alt.Chart(amplitude_df).mark_line().encode(
+            alt.Y("Amplitude", scale=alt.Scale(domain=(-1.5, 1.5))),
+            alt.X("Time", axis=None)),
+                            use_container_width=True)
 
 
 def welcome():
@@ -386,7 +379,8 @@ def welcome():
 
     st.write("What if you could capture sound in an image? What if you could add another dimension to a still photograph?"
     " What if you can make taking pictures more tangible?")
-    st.markdown("This is what this projects aims to do. More about how this is done can be found on my blog post Visualizing Sound in the Wild [![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/p/b500657b0d85/edit)")
+    st.markdown("This is what this projects aims to do. Read more on how this is done on my blog post:")
+    st.markdown("** *Visualizing Sound In the Wild* ** [![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/p/b500657b0d85/edit)")
     st.markdown(
         """
         The app supports two methods of visualizing sound:
@@ -417,6 +411,19 @@ def welcome():
     st.markdown("### Contact Me")
     st.markdown("[Anirudh Topiwala](https://anirudhtopiwala.com/) [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/anirudhtopiwala) [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/anirudhtopiwala/) [![Twitter](https://img.shields.io/badge/<handle>-%231DA1F2.svg?style=for-the-badge&logo=Twitter&logoColor=white)](https://twitter.com/TopiwalaAnirudh)")
 
+def main():
+    selected_box = st.sidebar.selectbox('Choose one of the following', (
+        'Project Overview',
+        'Visualize Sound in Real Time',
+        'Visualize Sound - YouTube',
+    ))
+
+    if selected_box == 'Project Overview':
+        welcome()
+    elif selected_box == 'Visualize Sound in Real Time':
+        visualize_sound_in_realtime()
+    elif selected_box == 'Visualize Sound - YouTube':
+        visualize_youtube_video()
 
 
 if __name__ == "__main__":
