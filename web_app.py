@@ -338,7 +338,7 @@ def visualize_sound_in_realtime():
     status_indicator.write("Running. Say something!")
     st.warning("The app is known to freeze up when many people are using the app, if the images are not being updated in realtime consider reloading the app. Or select the option to visualize audio from a YouTube video in the sidebar. Another option is to run the [app locally](https://github.com/anirudhtopiwala/visualize_sound_webapp).")
     st.write("Notice how when you speak loudlly the higher amplitude sounds waves generates a very bright or dark image.")
-    st.write("Now try whistling, the higher frequency of the whistling sound causes an increase in he rate of fluctuations of the brightness.")
+    st.write("Now try whistling, the higher frequency of the whistling sound causes an increase in the rate of fluctuations of the brightness.")
     st.write("Read more on how this works on my blog post ** *Visualizing Sound In the Wild* ** [![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/p/b500657b0d85/edit)")
 
     col1, col2 = st.columns(2)
