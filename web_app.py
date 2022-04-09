@@ -344,7 +344,7 @@ def visualize_youtube_video() -> None:
         audio = load_audio_from_link(link)
     except:
         st.warning(
-            "The video is unavailable, please try reloading or using a different link. If the issue persists, try running the [app locally](https://github.com/anirudhtopiwala/visualize_sound_webapp)"
+            "The video is unavailable, please try reloading or using a different link. If the issue persists, try running the [app locally](https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild)"
         )
         st.stop()
 
@@ -431,7 +431,7 @@ def visualize_youtube_video() -> None:
     # Contact Me
     st.markdown("### Contact Me")
     st.markdown(
-        "[Anirudh Topiwala](https://anirudhtopiwala.com/) [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/anirudhtopiwala) [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/anirudhtopiwala/) [![Twitter](https://img.shields.io/badge/<handle>-%231DA1F2.svg?style=for-the-badge&logo=Twitter&logoColor=white)](https://twitter.com/TopiwalaAnirudh)"
+        "[Anirudh Topiwala](https://anirudhtopiwala.com/) [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild) [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/anirudhtopiwala/) [![Twitter](https://img.shields.io/badge/<handle>-%231DA1F2.svg?style=for-the-badge&logo=Twitter&logoColor=white)](https://twitter.com/TopiwalaAnirudh)"
     )
 
 
@@ -471,17 +471,17 @@ def visualize_sound_in_realtime() -> None:
     # Setting up the page.
     status_indicator = st.empty()
     status_indicator.write("Running. Say something!")
-    st.warning(
-        "The app is known to freeze up when many people are using the app, if the images are not being updated in realtime consider reloading the app. Or select the option to visualize audio from a YouTube video in the sidebar. Another option is to run the [app locally](https://github.com/anirudhtopiwala/visualize_sound_webapp)."
-    )
     st.write(
         "Notice how when you speak loudly the higher amplitude sounds waves generates a very bright or dark image."
     )
     st.write(
-        "Now try whistling, the higher frequency of the whistling sound causes an increase in the rate of fluctuations of the brightness."
+        "Now try whistling, the shrill tone of the whistling sound produces high pitch sound waves. These sound waves are much less complex than human speech. Try talking and you will observe complex waves being formed in the plot."
     )
     st.write(
-        "Read more on how this works on my blog post ** *Visualizing Sound In the Wild* ** [![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/p/b500657b0d85/edit)"
+        "Read more on how this works on my blog post ** *Visualizing Sound In The Wild* ** [![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/p/b500657b0d85/edit)"
+    )
+    st.warning(
+        "The app is known to freeze up when many people are using the app, if the images are not being updated in realtime consider reloading the app. Or select the option to visualize audio from a YouTube video in the sidebar. Another option is to run the [app locally](https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild)."
     )
 
     col1, col2 = st.columns(2)
@@ -500,7 +500,7 @@ def visualize_sound_in_realtime() -> None:
     # Contact Me
     st.markdown("### Contact Me")
     st.markdown(
-        "[Anirudh Topiwala](https://anirudhtopiwala.com/) [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/anirudhtopiwala) [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/anirudhtopiwala/) [![Twitter](https://img.shields.io/badge/<handle>-%231DA1F2.svg?style=for-the-badge&logo=Twitter&logoColor=white)](https://twitter.com/TopiwalaAnirudh)"
+        "[Anirudh Topiwala](https://anirudhtopiwala.com/) [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild) [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/anirudhtopiwala/) [![Twitter](https://img.shields.io/badge/<handle>-%231DA1F2.svg?style=for-the-badge&logo=Twitter&logoColor=white)](https://twitter.com/TopiwalaAnirudh)"
     )
 
     while True:
@@ -603,7 +603,7 @@ def welcome() -> None:
     # Contact Me
     st.markdown("### Contact Me")
     st.markdown(
-        "[Anirudh Topiwala](https://anirudhtopiwala.com/) [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/anirudhtopiwala) [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/anirudhtopiwala/) [![Twitter](https://img.shields.io/badge/<handle>-%231DA1F2.svg?style=for-the-badge&logo=Twitter&logoColor=white)](https://twitter.com/TopiwalaAnirudh)"
+        "[Anirudh Topiwala](https://anirudhtopiwala.com/) [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild) [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/anirudhtopiwala/) [![Twitter](https://img.shields.io/badge/<handle>-%231DA1F2.svg?style=for-the-badge&logo=Twitter&logoColor=white)](https://twitter.com/TopiwalaAnirudh)"
     )
 
 
