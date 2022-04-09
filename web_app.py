@@ -32,6 +32,7 @@ import random
 import tempfile
 
 import altair as alt
+from typing import Tuple
 import cv2
 import numpy as np
 import pandas as pd
@@ -550,7 +551,7 @@ def welcome() -> None:
 
     st.write(
         "What if you could capture sound in an image? What if you could add another dimension to a still photograph?"
-        " What if you can make taking pictures more tangible?"
+        " What if you could make a picture come alive?"
     )
     st.markdown(
         "This is what this projects aims to do. Read more on how this is done on my blog post:"
@@ -591,6 +592,13 @@ def welcome() -> None:
         "*A 360 view of Seattle, the ferry wheel gives outstanding views of the city at 60ft directly above the Puget Sound. Listen in on how the sounds from a carousel next to the wheel lights up the colors in the night.*"
     )
     st.video("https://youtu.be/kIUXiqmtZqg")
+
+    # Seattle Great Wheel
+    st.markdown("#### Instagram or Snapchat Filter?")
+    st.markdown(
+        "*This is a video of me with an existing Devil Horns Snapchat filter, but with my own way of encoding the music into the picture. See how the music [Some Nights](https://www.youtube.com/watch?v=qQkBeOisNM0) is encoded into the picture and makes the picture come alive. Does this look cool or what?  Would you want this as an Instagram or a Snapchat filter?*"
+    )
+    st.video("https://www.youtube.com/watch?v=nDn1x1KHtOQ")
 
     # Contact Me
     st.markdown("### Contact Me")
