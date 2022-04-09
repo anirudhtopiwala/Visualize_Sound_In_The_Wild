@@ -250,7 +250,7 @@ def visualize_youtube_video():
         st.stop()
 
     # Set the frame rate for the video.
-    fps = st.radio("Available frame rates (frames/second) for rendering the video.",(30, 60, 120, 240), index=1)
+    fps = st.radio("Available frame rates (frames/second) for rendering the video.",(30, 60, 120), index=1)
     st.write("A higher frame rate allows visualizing more amplitudes and therefore would result in more fluctuations in the image, which is fun to see.")
     st.write("Read more on how this works on my blog post ** *Visualizing Sound In the Wild* ** [![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/p/b500657b0d85/edit)")
 
@@ -273,7 +273,9 @@ def visualize_youtube_video():
             # Get Image Clips
             img_clips = []
             for chunk in chunks:
-                # Dividing the ampltide by 10000 to get vaues in range [-1, 1]
+                # Dividing the ampltide by 10000 to get vaues in range [-1, 1].
+                # Original amplitudes can still be retrieved back as scaling the
+                # ampltidues still preserves the original signal.
                 sound_array = np.array(chunk.get_array_of_samples()) / 10000
                 img = encode_image(sound_array, img_foreground, img_background, True)
                 img_clips.append(ImageClip(img).set_duration(1/fps))
@@ -371,13 +373,16 @@ def visualize_sound_in_realtime():
                 frame_rate=audio_frame.sample_rate,
                 channels=num_channels,
             )
-        # Dividing the ampltide by 10000 to get vaues in range [-1, 1]
+        # Dividing the ampltide by 10000 to get vaues in range [-1, 1].
+        # Original amplitudes can still be retrieved back as scaling the
+        # ampltidues still preserves the original signal.
         sound_array = np.array(sound.get_array_of_samples()) / 10000
 
         encoded_image_st.image(
             encode_image(sound_array, img_foreground, img_background))
 
-        times = range(len(sound_array))
+        # Visualize the last extracted sound frame.
+        times = (np.arange(-len(sound_array), 0)) / sound.frame_rate
         amplitude_df = pd.DataFrame({'Amplitude': sound_array, 'Time': times})
 
         fig_st.altair_chart(alt.Chart(amplitude_df).mark_line().encode(
@@ -406,7 +411,7 @@ def welcome():
     st.subheader("Examples in the Wild")
     # Hiking Among The Trees
     st.markdown("#### Hiking Among The Trees")
-    st.markdown("*An early morning hike on the Mirror Lake trail in the woods of Mount Hood, Seattle*")
+    st.markdown("*An early morning hike on the Mirror Lake trail in the woods of Mount Hood, Oregon*")
     st.video("https://youtu.be/XUllsgl0diw")
 
     # The Mighty Multnomah Falls
