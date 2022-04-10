@@ -3,18 +3,20 @@
 
 ## Projects
 A complete list of all the projects can be found below. This is meant to be a living document and new projects will be added over time.
-1. [Seattle Great Wheel](https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild#Seattle-Great-Wheel)
-2. [Instagram or Snapchat Filter?](https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild#Instagram-or-Snapchat-Filter)
-3. [Hiking Among The Trees](https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild#Hiking-Among-The-Trees)
-4. [The Mighty Multnomah Falls]()
-5. [Wine o'Clock]()
+All the projects are also available in [Visualize Sound Projects](https://youtube.com/playlist?list=PLwL956DTEkdkA0pt-GFHNQqifHVksmZjY)
+1. [Seattle Great Wheel](https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild/blob/main/projects/PROJECTS.md#Seattle-Great-Wheel)
+2. [Instagram or Snapchat Filter?](https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild/blob/main/projects/PROJECTS.md#Instagram-or-Snapchat-Filter)
+3. [Hiking Among The Trees](https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild/blob/main/projects/PROJECTS.md#Hiking-Among-The-Trees)
+4. [The Mighty Multnomah Falls](https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild/blob/main/projects/PROJECTS.md#The-Mighty-Multnomah-Falls)
+5. [Wine o'Clock](https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild/blob/main/projects/PROJECTS.md#Wine-o'Clock)
+6. [Buzzing Bulb](https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild/blob/main/projects/PROJECTS.md#Buzzing-Bulb)
 
 ### Seattle Great Wheel
 Giving a 360 view of Seattle, the ferry wheel gives outstanding views of the city at 60 ft elevation right above the Puget Sound. Although, its real beauty shines up in the night. Right next to the wheel is the Historic Carousel and Wings Over Washington. These landmarks are the first thing that comes to mind and when thinking of Seattle and so I wanted to merge these into one picture. The sound from the carousel varies the brightness of the amazing lights on the wheel making the image come alive. Also don't forget to admire at the reflection of the lights in the water.
 
 [![Image](https://img.youtube.com/vi/kIUXiqmtZqg/0.jpg)](https://www.youtube.com/watch?v=kIUXiqmtZqg)
 
-### Instagram or Snapchat Filter
+### Instagram or Snapchat Filter?
 This is a video of me with an existing Devil Horns Snapchat filter, but with my own way of encoding the music into the picture. See how the music [Some Nights](https://www.youtube.com/watch?v=qQkBeOisNM0) is encoded into the picture and makes the picture come alive. Does this look cool or what?  Would you want this as an Instagram or a Snapchat filter?
 
 [![Image](https://img.youtube.com/vi/nDn1x1KHtOQ/0.jpg)](https://www.youtube.com/watch?v=nDn1x1KHtOQ)

@@ -28,12 +28,14 @@ Below are some projects that demonstrates how sound can be visualized in an imag
 2. [Instagram or Snapchat Filter?](https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild#Instagram-or-Snapchat-Filter)
 3. [Hiking Among The Trees](https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild#Hiking-Among-The-Trees)
 
+A complete list of projects can be found [here](https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild/blob/main/projects/PROJECTS.md#Visualizing-Sound-In-The-Wild) and in the YouTube playlist [Visualize Sound Projects](https://youtube.com/playlist?list=PLwL956DTEkdkA0pt-GFHNQqifHVksmZjY).
+
 ### Seattle Great Wheel
 Giving a 360 view of Seattle, the ferry wheel gives outstanding views of the city at 60 ft elevation right above the Puget Sound. Although, its real beauty shines up in the night. Right next to the wheel is the Historic Carousel and Wings Over Washington. These landmarks are the first thing that comes to mind and when thinking of Seattle and so I wanted to merge these into one picture. The sound from the carousel varies the brightness of the amazing lights on the wheel making the image come alive. Also don't forget to admire at the reflection of the lights in the water.
 
 [![Image](https://img.youtube.com/vi/kIUXiqmtZqg/0.jpg)](https://www.youtube.com/watch?v=kIUXiqmtZqg)
 
-### Instagram or Snapchat Filter
+### Instagram or Snapchat Filter?
 This is a video of me with an existing Devil Horns Snapchat filter, but with my own way of encoding the music into the picture. See how the music [Some Nights](https://www.youtube.com/watch?v=qQkBeOisNM0) is encoded into the picture and makes the picture come alive. Does this look cool or what?  Would you want this as an Instagram or a Snapchat filter?
 
 [![Image](https://img.youtube.com/vi/nDn1x1KHtOQ/0.jpg)](https://www.youtube.com/watch?v=nDn1x1KHtOQ)
