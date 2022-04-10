@@ -11,8 +11,9 @@
 This is what this projects aims to do. This is a project where the pictures are made more tangible by encoding the sound of the surroundings where the picture was taken into the image. Read more about how this works in my blog post **[*Visualizing Sound In The Wild*](https://medium.com/@topiwala.anirudh/visualizing-sound-in-the-wild-b500657b0d85)**.
 
 To understand how the algorithm works and make the experience more tangible I create an app using Streamlit. The app is hosted by Streamlit Share and Heroku.
-1. **[*Visualizing Sound In the Wild on Streamlit Share*](https://share.streamlit.io/anirudhtopiwala/visualize_sound_webapp/main/web_app.py)**
-2. **[*Visualizing Sound In the Wild on Heroku*](https://visualize-sound.herokuapp.com/)**
+1. **[*Visualizing Sound In the Wild on Streamlit Share*](https://share.streamlit.io/anirudhtopiwala/visualize_sound_webapp/main/web_app.py)**  [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/anirudhtopiwala/visualize_sound_webapp/main/web_app.py)
+2. **[*Visualizing Sound In the Wild on Heroku*](https://visualize-sound.herokuapp.com/)**  [![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white)](https://visualize-sound.herokuapp.com/)
+
 
 Users can visualize sound on any image of their choosing. The app supports two methods of visualizing sound:
 1. Visualizing Sound in Real Time - Use your own voice to visualize sound.
