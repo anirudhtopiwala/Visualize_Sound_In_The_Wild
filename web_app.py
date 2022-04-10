@@ -447,18 +447,15 @@ def visualize_sound_in_realtime() -> None:
     st.header("Visualizing Sound In Real Time")
     st.markdown("""Visualize your own voice on a picture of your liking.""")
 
-    # Plot sound and see its effects on an image.
-    samplerate = 48000  # Default samplerate for most microphones.
     # Visualization is only possible on mono audio.
-    num_channels = 1
+    NUM_CHANNELS = 1
     #  Set up the webrtc stramer to get audio.
     webrtc_ctx = webrtc_streamer(
         key="visualize-sound",
         mode=WebRtcMode.SENDONLY,
-        audio_receiver_size=samplerate,
         rtc_configuration=RTC_CONFIGURATION,
+        audio_receiver_size=16,
         media_stream_constraints={"video": False, "audio": True},
-        async_processing=True,
     )
 
     if not webrtc_ctx.state.playing:
@@ -518,7 +515,7 @@ def visualize_sound_in_realtime() -> None:
                 data=audio_frame.to_ndarray().tobytes(),
                 sample_width=audio_frame.format.bytes,
                 frame_rate=audio_frame.sample_rate,
-                channels=num_channels,
+                channels=NUM_CHANNELS,
             )
         # Dividing the amplitude by 10000 to get values in range [-1, 1].
         # Original amplitudes can still be retrieved back as scaling the
