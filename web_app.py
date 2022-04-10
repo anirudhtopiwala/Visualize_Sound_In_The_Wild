@@ -307,7 +307,9 @@ def load_audio_from_link(yt_link: str) -> pydub.AudioSegment:
 
 def get_youtube_link() -> str:
     """Streamlit selectbox to get youtube link from user."""
+    yt_link = ""
     yt_audios = {
+        "Select": yt_link,
         "Imagine Dragons: Believer": "https://www.youtube.com/watch?v=Roi4TG6ZvKk",
         "You are my Sunshine": "https://www.youtube.com/watch?v=dh7LJDHFaqA",
         "Doobey": "https://www.youtube.com/watch?v=6eGCi4SVy94",
@@ -316,9 +318,13 @@ def get_youtube_link() -> str:
     select_box_link = st.selectbox(
         "Choose a song or use your own link.", yt_audios.keys()
     )
-    link = st.text_input("YouTube Link", yt_audios[select_box_link])
-    st.write(f"Using YouTube link: {link}.")
-    return link
+    yt_link = st.text_input("YouTube Link", yt_audios[select_box_link])
+    if yt_link is "":
+        st.warning("Please select an option from above or use your own link.")
+        st.stop()
+
+    st.write(f"Using YouTube link: {yt_link}.")
+    return yt_link
 
 
 def visualize_youtube_video() -> None:
@@ -368,15 +374,16 @@ def visualize_youtube_video() -> None:
         index=1,
     )
     st.write(
-        "A higher frame rate allows visualizing more amplitudes and therefore would result in more fluctuations in the image, which is fun to see."
-    )
-    st.write(
-        "Read more on how this works on my blog post ** *Visualizing Sound In The Wild* ** [![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/p/b500657b0d85/edit)"
+        "A higher frame rate allows capturing more amplitudes and hence allows for a more accurate encoding of the sound."
     )
 
     # Get image arrays from user.
     img, img_mask = load_image()
     resized_img, img_foreground, img_background = process_image(img, img_mask)
+
+    st.write(
+        "Read more on how this works on my blog post ** *Visualizing Sound In The Wild* ** [![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/p/b500657b0d85/edit)"
+    )
 
     # Cut the aduio to the specified range.
     cut_audio = audio[start_time * 1000 : end_time * 1000]
