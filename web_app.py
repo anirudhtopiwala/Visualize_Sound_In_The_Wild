@@ -382,7 +382,7 @@ def visualize_youtube_video() -> None:
     resized_img, img_foreground, img_background = process_image(img, img_mask)
 
     st.write(
-        "Read more on how this works on my blog post ** *Visualizing Sound In The Wild* ** [![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/p/b500657b0d85/edit)"
+        "Read more on how this works on my blog post ** *Visualizing Sound In The Wild* ** [![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/@topiwala.anirudh/visualizing-sound-in-the-wild-b500657b0d85)"
     )
 
     # Cut the aduio to the specified range.
@@ -482,7 +482,7 @@ def visualize_sound_in_realtime() -> None:
         "Now try whistling, the shrill tone of the whistling sound produces high pitch sound waves. These sound waves are much less complex than human speech. Try talking and you will observe complex waves being formed in the plot."
     )
     st.write(
-        "Read more on how this works on my blog post ** *Visualizing Sound In The Wild* ** [![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/p/b500657b0d85/edit)"
+        "Read more on how this works on my blog post ** *Visualizing Sound In The Wild* ** [![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/@topiwala.anirudh/visualizing-sound-in-the-wild-b500657b0d85)"
     )
     st.warning(
         "The app is known to freeze up when many people are using the app, if the images are not being updated in realtime consider reloading the app. Or select the option to visualize audio from a YouTube video in the sidebar. Another option is to run the [app locally](https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild)."
@@ -561,7 +561,7 @@ def welcome() -> None:
         "This is what this projects aims to do. Read more on how this is done on my blog post:"
     )
     st.markdown(
-        "** *Visualizing Sound In The Wild* ** [![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/p/b500657b0d85/edit)"
+        "** *Visualizing Sound In The Wild* ** [![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/@topiwala.anirudh/visualizing-sound-in-the-wild-b500657b0d85)"
     )
     st.markdown(
         """

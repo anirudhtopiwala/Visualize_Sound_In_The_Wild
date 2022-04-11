@@ -1,5 +1,5 @@
 # Visualizing Sound In The Wild
-[![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/p/b500657b0d85/edit) [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/anirudhtopiwala/visualize_sound_webapp/main/web_app.py) [![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white)](https://visualize-sound.herokuapp.com/)
+[![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/@topiwala.anirudh/visualizing-sound-in-the-wild-b500657b0d85) [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/anirudhtopiwala/visualize_sound_webapp/main/web_app.py) [![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white)](https://visualize-sound.herokuapp.com/)
 
 ## Projects
 A complete list of all the projects can be found below. This is meant to be a living document and new projects will be added over time.
@@ -8,8 +8,8 @@ All the projects are also available in [Visualize Sound Projects](https://youtub
 2. [Instagram or Snapchat Filter?](https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild/blob/main/projects/PROJECTS.md#Instagram-or-Snapchat-Filter)
 3. [Hiking Among The Trees](https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild/blob/main/projects/PROJECTS.md#Hiking-Among-The-Trees)
 4. [The Mighty Multnomah Falls](https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild/blob/main/projects/PROJECTS.md#The-Mighty-Multnomah-Falls)
-5. [Wine o'Clock](https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild/blob/main/projects/PROJECTS.md#Wine-o'Clock)
-6. [Buzzing Bulb](https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild/blob/main/projects/PROJECTS.md#Buzzing-Bulb)
+5. [Wine o'Clock](https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild/blob/main/projects/PROJECTS.md#wine-oclock)
+6. [Buzzing Bulb](https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild/blob/main/projects/PROJECTS.md#buzzing-bulb)
 
 ### Seattle Great Wheel
 Giving a 360 view of Seattle, the ferry wheel gives outstanding views of the city at 60 ft elevation right above the Puget Sound. Although, its real beauty shines up in the night. Right next to the wheel is the Historic Carousel and Wings Over Washington. These landmarks are the first thing that comes to mind and when thinking of Seattle and so I wanted to merge these into one picture. The sound from the carousel varies the brightness of the amazing lights on the wheel making the image come alive. Also don't forget to admire at the reflection of the lights in the water.
