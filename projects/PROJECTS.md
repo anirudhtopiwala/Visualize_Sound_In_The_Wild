@@ -1,5 +1,5 @@
 # Visualizing Sound In The Wild
-[![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/@topiwala.anirudh/visualizing-sound-in-the-wild-b500657b0d85) [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/anirudhtopiwala/visualize_sound_webapp/main/web_app.py) [![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white)](https://visualize-sound.herokuapp.com/)
+[![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/@topiwala.anirudh/visualizing-sound-in-the-wild-b500657b0d85) [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/anirudhtopiwala/visualize_sound_webapp/main/web_app.py) [![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white)](https://visualize-sound.herokuapp.com/)<a href="https://opensea.io/collection/visualize-sound" title="Buy on OpenSea" target="_blank"><img style="width:100px; border-radius:2px; box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);" src="https://storage.googleapis.com/opensea-static/Logomark/Badge%20-%20Available%20On%20-%20Dark.png" alt="OpenSea" /></a>
 
 ## Projects
 A complete list of all the projects can be found below. This is meant to be a living document and new projects will be added over time.
@@ -26,11 +26,15 @@ An early morning hike on the Mirror Lake trail in the woods of Mount Hood, Orego
 
 [![Image](https://img.youtube.com/vi/XUllsgl0diw/0.jpg)](https://www.youtube.com/watch?v=XUllsgl0diw)
 
+Get exclusive access to the original HD picture along with the sound of the chirping birds used to make this art. <a href="https://opensea.io/assets/0x495f947276749ce646f68ac8c248420045cb7b5e/46670013259754365806976296485688128176995984954052073858673724126075602075649/" title="Buy on OpenSea" target="_blank"><img style="width:55px; border-radius:2px; box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);" src="https://storage.googleapis.com/opensea-static/Logomark/Badge%20-%20Available%20On%20-%20Dark.png" alt="OpenSea" /></a>
+
+
 ## The Mighty Multnomah Falls
 Being the tallest waterfall in Oregon, listen in on 923 gallons of water falling over a height of 620 feet every second. The sound from the waterfall varies the brightness of the waterfall making the image come alive.
 
-[![Image](https://img.youtube.com/vi/AqIaOgdsWUo/0.jpg)](https://www.youtube.com/watch?v=AqIaOgdsWUo)
+[![Image](https://img.youtube.com/vi/YdY4I7n0Cpw/0.jpg)](https://www.youtube.com/watch?v=YdY4I7n0Cpw)
 
+Get exclusive access to the original HD picture along with the sound of Multnomah Falls used to make this art. <a href="https://opensea.io/assets/0x495f947276749ce646f68ac8c248420045cb7b5e/46670013259754365806976296485688128176995984954052073858673724124976090447873/" title="Buy on OpenSea" target="_blank"><img style="width:55px; border-radius:2px; box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);" src="https://storage.googleapis.com/opensea-static/Logomark/Badge%20-%20Available%20On%20-%20Dark.png" alt="OpenSea" /></a>
 
 ## Wine o'Clock
 62 miles from downtown Portland, nestled right by the town of Mount Hood River is a very cute little winery Cathedral Ridge Winery. This picture is from a wine tasting one summer evening with a great ambiance. The beats from the ambiance vary the brightness of the beautiful amber string lights making the image come alive.
