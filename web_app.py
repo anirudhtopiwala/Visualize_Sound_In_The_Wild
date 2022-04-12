@@ -582,13 +582,19 @@ def welcome() -> None:
         "*An early morning hike on the Mirror Lake trail in the woods of Mount Hood, Oregon*"
     )
     st.video("https://youtu.be/XUllsgl0diw")
+    st.markdown(
+        "Get exclusive access to the original HD picture along with the sound of the chirping birds used to make this art through [NFT's](https://opensea.io/assets/0x495f947276749ce646f68ac8c248420045cb7b5e/46670013259754365806976296485688128176995984954052073858673724126075602075649) hosted on [opensea.io](https://opensea.io/collection/visualize-sound)."
+    )
 
     # The Mighty Multnomah Falls
     st.markdown("#### The Mighty Multnomah Falls")
     st.markdown(
         "*Being the tallest waterfall in Oregon, listen in on 923 gallons of water falling over a height of 620 feet every second.*"
     )
-    st.video("https://youtu.be/AqIaOgdsWUo")
+    st.video("https://youtu.be/YdY4I7n0Cpw")
+    st.markdown(
+        "Get exclusive access to the original HD picture along with the sound of the chirping birds used to make this art through [NFT's](https://opensea.io/assets/0x495f947276749ce646f68ac8c248420045cb7b5e/46670013259754365806976296485688128176995984954052073858673724124976090447873) hosted on [opensea.io](https://opensea.io/collection/visualize-sound)."
+    )
 
     # Seattle Great Wheel
     st.markdown("#### Seattle Great Wheel")
