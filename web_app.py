@@ -21,7 +21,7 @@ Users can also encode audio from any YouTube video into the image.
 Read more about this on my blog:
 
 The app is hosted on:
-1: Streamlit Share: https://share.streamlit.io/anirudhtopiwala/visualize_sound_webapp/main/web_app.py
+1: Streamlit Share: https://share.streamlit.io/anirudhtopiwala/visualize_sound_in_the_wild/main/web_app.py
 2. Heroku: https://visualize-sound.herokuapp.com/
 """
 import io
