@@ -219,7 +219,9 @@ def load_image() -> Tuple[np.array, np.array]:
         st.sidebar.write("Click again to try out a different image.")
         random_index = random.randint(0, len(sample_images) - 1)
         img = Image.open(sample_images[random_index])
+        img = img.convert("RGB")
         img_mask = Image.open(sample_images_mask[random_index])
+        img_mask = img_mask.convert("RGB")
     else:
         if uploaded_img_file is not None:
             img = Image.open(io.BytesIO(uploaded_img_file.getvalue()))
