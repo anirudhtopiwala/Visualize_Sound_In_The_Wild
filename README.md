@@ -77,4 +77,8 @@ The advantage of running the app locally is that you get to visualize sound in r
 
 
 ## Contact Me
-[Anirudh Topiwala](https://anirudhtopiwala.com/) [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/anirudhtopiwala/) [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/anirudhtopiwala/) [![Twitter](https://img.shields.io/badge/<handle>-%231DA1F2.svg?style=for-the-badge&logo=Twitter&logoColor=white)](https://twitter.com/TopiwalaAnirudh)[![Instagram](https://img.shields.io/badge/<handle>-%23E4405F.svg?style=for-the-badge&logo=Instagram&logoColor=white)](https://www.instagram.com/visualize_sound/)
+[Anirudh Topiwala](https://anirudhtopiwala.com/)
+[![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/anirudhtopiwala/)
+[![YouTube](https://img.shields.io/badge/Visualizing_Sound_In_The_Wild-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white)](https://www.youtube.com/channel/UCFKaLmO8K11veL8JJZNPR1Q)
+[![Instagram](https://img.shields.io/badge/visualize_sound-%23E4405F.svg?style=for-the-badge&logo=Instagram&logoColor=white)](https://www.instagram.com/visualize_sound/)
+<a href="https://opensea.io/collection/visualize-sound" title="Buy on OpenSea" target="_blank"><img style="width:80px; border-radius:2px; box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);" src="https://storage.googleapis.com/opensea-static/Logomark/Badge%20-%20Available%20On%20-%20Dark.png" alt="OpenSea" /></a>

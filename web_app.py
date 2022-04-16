@@ -59,8 +59,12 @@ sample_images_mask = [
 RTC_CONFIGURATION = RTCConfiguration(
     {"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]}
 )
-
 OPENSEA_MARKDOWN_BADGE = """<a href="https://opensea.io/collection/visualize-sound" title="Buy on OpenSea" target="_blank"><img style="width:70px; border-radius:2px; box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);" src="https://storage.googleapis.com/opensea-static/Logomark/Badge%20-%20Available%20On%20-%20Dark.png" alt="OpenSea" /></a>"""
+CONTACT_ME_MARKDOWN = """[Anirudh Topiwala](https://anirudhtopiwala.com/)
+[![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/anirudhtopiwala/)
+[![YouTube](https://img.shields.io/badge/Visualizing_Sound-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white)](https://www.youtube.com/channel/UCFKaLmO8K11veL8JJZNPR1Q)
+[![Instagram](https://img.shields.io/badge/visualize_sound-%23E4405F.svg?style=for-the-badge&logo=Instagram&logoColor=white)](https://www.instagram.com/visualize_sound/)
+<a href="https://opensea.io/collection/visualize-sound" title="Buy on OpenSea" target="_blank"><img style="width:80px; border-radius:2px; box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);" src="https://storage.googleapis.com/opensea-static/Logomark/Badge%20-%20Available%20On%20-%20Dark.png" alt="OpenSea" /></a>"""
 
 
 def adjust_brightness(img: np.array, adjust_brightness_value: float) -> np.array:
@@ -444,10 +448,7 @@ def visualize_youtube_video() -> None:
 
     # Contact Me
     st.markdown("### Contact Me")
-    st.markdown(
-        f"[Anirudh Topiwala](https://anirudhtopiwala.com/) [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild) [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/anirudhtopiwala/) [![Twitter](https://img.shields.io/badge/<handle>-%231DA1F2.svg?style=for-the-badge&logo=Twitter&logoColor=white)](https://twitter.com/TopiwalaAnirudh)[![Instagram](https://img.shields.io/badge/<handle>-%23E4405F.svg?style=for-the-badge&logo=Instagram&logoColor=white)](https://www.instagram.com/visualize_sound/) [{OPENSEA_MARKDOWN_BADGE}](https://opensea.io/collection/visualize-sound)",
-        unsafe_allow_html=True,
-    )
+    st.markdown(CONTACT_ME_MARKDOWN, unsafe_allow_html=True)
 
 
 def visualize_sound_in_realtime() -> None:
@@ -511,10 +512,7 @@ def visualize_sound_in_realtime() -> None:
 
     # Contact Me
     st.markdown("### Contact Me")
-    st.markdown(
-        f"[Anirudh Topiwala](https://anirudhtopiwala.com/) [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild) [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/anirudhtopiwala/) [![Twitter](https://img.shields.io/badge/<handle>-%231DA1F2.svg?style=for-the-badge&logo=Twitter&logoColor=white)](https://twitter.com/TopiwalaAnirudh)[![Instagram](https://img.shields.io/badge/<handle>-%23E4405F.svg?style=for-the-badge&logo=Instagram&logoColor=white)](https://www.instagram.com/visualize_sound/) [{OPENSEA_MARKDOWN_BADGE}](https://opensea.io/collection/visualize-sound)",
-        unsafe_allow_html=True,
-    )
+    st.markdown(CONTACT_ME_MARKDOWN, unsafe_allow_html=True)
 
     while True:
         try:
@@ -623,10 +621,7 @@ def welcome() -> None:
 
     # Contact Me
     st.markdown("### Contact Me")
-    st.markdown(
-        f"[Anirudh Topiwala](https://anirudhtopiwala.com/) [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild) [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/anirudhtopiwala/) [![Twitter](https://img.shields.io/badge/<handle>-%231DA1F2.svg?style=for-the-badge&logo=Twitter&logoColor=white)](https://twitter.com/TopiwalaAnirudh)[![Instagram](https://img.shields.io/badge/<handle>-%23E4405F.svg?style=for-the-badge&logo=Instagram&logoColor=white)](https://www.instagram.com/visualize_sound/) [{OPENSEA_MARKDOWN_BADGE}](https://opensea.io/collection/visualize-sound)",
-        unsafe_allow_html=True,
-    )
+    st.markdown(CONTACT_ME_MARKDOWN, unsafe_allow_html=True)
 
 
 def main() -> None:
