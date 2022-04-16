@@ -356,6 +356,9 @@ def visualize_youtube_video() -> None:
         st.warning(
             "The video is unavailable, please try reloading or using a different link. If the issue persists, try running the [app locally](https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild)"
         )
+        st.warning(
+            "There is an ongoing error with PyTube because of which the YouTube version is temporarily not working. An example demo of this app can still be found [here](https://www.youtube.com/watch?v=9ukxZZZUCMQ&t=500s)."
+        )
         st.stop()
 
     # Get the time span of the audio and set the range selection sliders.
