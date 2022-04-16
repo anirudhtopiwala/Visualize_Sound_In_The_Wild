@@ -60,8 +60,6 @@ RTC_CONFIGURATION = RTCConfiguration(
     {"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]}
 )
 
-OPENSEA_MARKDOWN_BADGE = """<a href="https://opensea.io/collection/visualize-sound" title="Buy on OpenSea" target="_blank"><img style="width:70px; border-radius:2px; box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);" src="https://storage.googleapis.com/opensea-static/Logomark/Badge%20-%20Available%20On%20-%20Dark.png" alt="OpenSea" /></a>"""
-
 
 def adjust_brightness(img: np.array, adjust_brightness_value: float) -> np.array:
     """Adjusts the brightness of an image by converting it to HSV colorpace.
@@ -381,13 +379,13 @@ def visualize_youtube_video() -> None:
         "A higher frame rate allows capturing more amplitudes and hence allows for a more accurate encoding of the sound."
     )
 
-    st.write(
-        "Read more on how this works on my blog post ** *Visualizing Sound In The Wild* ** [![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/@topiwala.anirudh/visualizing-sound-in-the-wild-b500657b0d85)"
-    )
-
     # Get image arrays from user.
     img, img_mask = load_image()
     resized_img, img_foreground, img_background = process_image(img, img_mask)
+
+    st.write(
+        "Read more on how this works on my blog post ** *Visualizing Sound In The Wild* ** [![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/@topiwala.anirudh/visualizing-sound-in-the-wild-b500657b0d85)"
+    )
 
     # Cut the aduio to the specified range.
     cut_audio = audio[start_time * 1000 : end_time * 1000]
@@ -441,10 +439,9 @@ def visualize_youtube_video() -> None:
 
     # Contact Me
     st.markdown("### Contact Me")
-    # st.markdown(
-    #     f"[Anirudh Topiwala](https://anirudhtopiwala.com/) [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild) [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/anirudhtopiwala/) [![Twitter](https://img.shields.io/badge/<handle>-%231DA1F2.svg?style=for-the-badge&logo=Twitter&logoColor=white)](https://twitter.com/TopiwalaAnirudh)[![Instagram](https://img.shields.io/badge/<handle>-%23E4405F.svg?style=for-the-badge&logo=Instagram&logoColor=white)](https://www.instagram.com/visualize_sound/) [{OPENSEA_MARKDOWN_BADGE}](https://opensea.io/collection/visualize-sound)",
-    #     unsafe_allow_html=True,
-    # )
+    st.markdown(
+        "[Anirudh Topiwala](https://anirudhtopiwala.com/) [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild) [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/anirudhtopiwala/) [![Twitter](https://img.shields.io/badge/<handle>-%231DA1F2.svg?style=for-the-badge&logo=Twitter&logoColor=white)](https://twitter.com/TopiwalaAnirudh)[![Instagram](https://img.shields.io/badge/<handle>-%23E4405F.svg?style=for-the-badge&logo=Instagram&logoColor=white)](https://www.instagram.com/visualize_sound/)"
+    )
 
 
 def visualize_sound_in_realtime() -> None:
@@ -509,8 +506,7 @@ def visualize_sound_in_realtime() -> None:
     # Contact Me
     st.markdown("### Contact Me")
     st.markdown(
-        f"[Anirudh Topiwala](https://anirudhtopiwala.com/) [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild) [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/anirudhtopiwala/) [![Twitter](https://img.shields.io/badge/<handle>-%231DA1F2.svg?style=for-the-badge&logo=Twitter&logoColor=white)](https://twitter.com/TopiwalaAnirudh)[![Instagram](https://img.shields.io/badge/<handle>-%23E4405F.svg?style=for-the-badge&logo=Instagram&logoColor=white)](https://www.instagram.com/visualize_sound/) [{OPENSEA_MARKDOWN_BADGE}](https://opensea.io/collection/visualize-sound)",
-        unsafe_allow_html=True,
+        "[Anirudh Topiwala](https://anirudhtopiwala.com/) [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild) [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/anirudhtopiwala/) [![Twitter](https://img.shields.io/badge/<handle>-%231DA1F2.svg?style=for-the-badge&logo=Twitter&logoColor=white)](https://twitter.com/TopiwalaAnirudh)[![Instagram](https://img.shields.io/badge/<handle>-%23E4405F.svg?style=for-the-badge&logo=Instagram&logoColor=white)](https://www.instagram.com/visualize_sound/)"
     )
 
     while True:
@@ -589,8 +585,7 @@ def welcome() -> None:
     )
     st.video("https://youtu.be/XUllsgl0diw")
     st.markdown(
-        f"Get exclusive access to the original HD picture along with the sound of the chirping birds used to make this art through NFT's hosted on Opensea. [{OPENSEA_MARKDOWN_BADGE}](https://opensea.io/collection/visualize-sound)",
-        unsafe_allow_html=True,
+        "Get exclusive access to the original HD picture along with the sound of the chirping birds used to make this art through [NFT's](https://opensea.io/assets/0x495f947276749ce646f68ac8c248420045cb7b5e/46670013259754365806976296485688128176995984954052073858673724126075602075649) hosted on [opensea.io](https://opensea.io/collection/visualize-sound)."
     )
 
     # The Mighty Multnomah Falls
@@ -600,8 +595,7 @@ def welcome() -> None:
     )
     st.video("https://youtu.be/YdY4I7n0Cpw")
     st.markdown(
-        f"Get exclusive access to the original HD picture along with the sound of the gushing water used to make this art through NFT's hosted on Opensea. [{OPENSEA_MARKDOWN_BADGE}](https://opensea.io/collection/visualize-sound)",
-        unsafe_allow_html=True,
+        "Get exclusive access to the original HD picture along with the sound of the chirping birds used to make this art through [NFT's](https://opensea.io/assets/0x495f947276749ce646f68ac8c248420045cb7b5e/46670013259754365806976296485688128176995984954052073858673724124976090447873) hosted on [opensea.io](https://opensea.io/collection/visualize-sound)."
     )
 
     # Seattle Great Wheel
@@ -621,8 +615,7 @@ def welcome() -> None:
     # Contact Me
     st.markdown("### Contact Me")
     st.markdown(
-        f"[Anirudh Topiwala](https://anirudhtopiwala.com/) [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild) [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/anirudhtopiwala/) [![Twitter](https://img.shields.io/badge/<handle>-%231DA1F2.svg?style=for-the-badge&logo=Twitter&logoColor=white)](https://twitter.com/TopiwalaAnirudh)[![Instagram](https://img.shields.io/badge/<handle>-%23E4405F.svg?style=for-the-badge&logo=Instagram&logoColor=white)](https://www.instagram.com/visualize_sound/) [{OPENSEA_MARKDOWN_BADGE}](https://opensea.io/collection/visualize-sound)",
-        unsafe_allow_html=True,
+        "[Anirudh Topiwala](https://anirudhtopiwala.com/) [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild) [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/anirudhtopiwala/) [![Twitter](https://img.shields.io/badge/<handle>-%231DA1F2.svg?style=for-the-badge&logo=Twitter&logoColor=white)](https://twitter.com/TopiwalaAnirudh)[![Instagram](https://img.shields.io/badge/<handle>-%23E4405F.svg?style=for-the-badge&logo=Instagram&logoColor=white)](https://www.instagram.com/visualize_sound/)"
     )
 
 
