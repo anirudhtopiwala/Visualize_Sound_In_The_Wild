@@ -611,8 +611,12 @@ def welcome() -> None:
         "*A 360 view of Seattle, the ferry wheel gives outstanding views of the city at 60ft directly above the Puget Sound. Listen in on how the sounds from a carousel next to the wheel lights up the colors in the night.*"
     )
     st.video("https://youtu.be/kIUXiqmtZqg")
+    st.markdown(
+        f"Get exclusive access to the original HD picture along with the sound of the Historical Carousel used to make this art through NFT's hosted on Opensea. [{OPENSEA_MARKDOWN_BADGE}](https://opensea.io/collection/visualize-sound)",
+        unsafe_allow_html=True,
+    )
 
-    # Seattle Great Wheel
+    # Instagram or Snapchat Filter
     st.markdown("#### Instagram or Snapchat Filter?")
     st.markdown(
         "*This is a video of me with an existing Devil Horns Snapchat filter, but with my own way of encoding the music into the picture. See how the music [Some Nights](https://www.youtube.com/watch?v=qQkBeOisNM0) is encoded into the picture and makes the picture come alive. Does this look cool or what?  Would you want this as an Instagram or a Snapchat filter?*"
