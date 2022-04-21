@@ -298,7 +298,8 @@ def load_audio_from_link(yt_link: str) -> pydub.AudioSegment:
     """
     try:
         yt = YouTube(yt_link)
-    except VideoUnavailable as e:
+    except Exception as e:
+        st.warning(f"Error in loading youtube video. Error: {e}")
         return e
     strm = yt.streams.filter(only_audio=True, file_extension="mp4").first()
     if strm is None:
@@ -361,7 +362,7 @@ def visualize_youtube_video() -> None:
             "The video is unavailable, please try reloading or using a different link. If the issue persists, try running the [app locally](https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild)"
         )
         st.warning(
-            "There is an ongoing error with PyTube because of which the YouTube version is temporarily not working. An example demo of this app can still be found [here](https://www.youtube.com/watch?v=9ukxZZZUCMQ&t=500s)."
+            "There is an ongoing error with PyTube because of which the YouTube version is temporarily not working. The fix is available [here](https://stackoverflow.com/questions/68945080/pytube-exceptions-regexmatcherror-get-throttling-function-name-could-not-find/71903013#71903013) and is being tracked in [Guthub Issue](https://github.com/pytube/pytube/issues/1293). The apps runs fine after applying the fix locally. An example demo of this app can still be found [here](https://www.youtube.com/watch?v=9ukxZZZUCMQ&t=500s)."
         )
         st.stop()
 
