@@ -359,7 +359,7 @@ def visualize_youtube_video() -> None:
         audio = load_audio_from_link(link)
     except:
         st.warning(
-            "The video is unavailable, please try reloading or using a different link. If the issue persists, try running the [app locally](https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild)"
+            "The video is unavailable, please try reloading or using a different link. If the issue persists, try running the [app locally](https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild#run-the-app-locally)"
         )
         st.warning(
             "There is an ongoing error with PyTube because of which the YouTube version is temporarily not working. The fix is available [here](https://stackoverflow.com/questions/68945080/pytube-exceptions-regexmatcherror-get-throttling-function-name-could-not-find/71903013#71903013) and is being tracked in [Guthub Issue](https://github.com/pytube/pytube/issues/1293). The apps runs fine after applying the fix locally. An example demo of this app can still be found [here](https://www.youtube.com/watch?v=9ukxZZZUCMQ&t=500s)."
@@ -495,7 +495,7 @@ def visualize_sound_in_realtime() -> None:
         "Read more on how this works on my blog post ** *Visualizing Sound In The Wild* ** [![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/@topiwala.anirudh/visualizing-sound-in-the-wild-b500657b0d85)"
     )
     st.warning(
-        "The app is known to freeze up when many people are using the app, if the images are not being updated in realtime consider reloading the app. Or select the option to visualize audio from a YouTube video in the sidebar. Another option is to run the [app locally](https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild)."
+        "The app is known to freeze up when many people are using the app, if the images are not being updated in realtime consider reloading the app. Or select the option to visualize audio from a YouTube video in the sidebar. Another option is to run the [app locally](https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild#run-the-app-locally)."
     )
 
     col1, col2 = st.columns(2)
