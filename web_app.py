@@ -629,20 +629,34 @@ def welcome() -> None:
     st.markdown(CONTACT_ME_MARKDOWN, unsafe_allow_html=True)
 
 
+def project_list():
+    """Lists all the projects by reading it from Projects.md."""
+    readme = io.open("./projects/PROJECTS.md").read()
+    # Redirect github link to streamlit share.
+    readme = readme.replace(
+        "https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild/blob/main/projects/PROJECTS.md#",
+        "https://share.streamlit.io/anirudhtopiwala/visualize_sound_in_the_wild/main/web_app.py#",
+    )
+    st.write(readme, unsafe_allow_html=True)
+
+
 def main() -> None:
     """Sets up the options to navigate between different pages."""
     selected_box = st.sidebar.selectbox(
         "Choose one of the following",
         (
             "Project Overview",
-            "Visualize Sound in Real Time",
+            "All Projects",
+            "Visualize Sound - Real Time",
             "Visualize Sound - YouTube",
         ),
     )
 
     if selected_box == "Project Overview":
         welcome()
-    elif selected_box == "Visualize Sound in Real Time":
+    if selected_box == "All Projects":
+        project_list()
+    elif selected_box == "Visualize Sound - Real Time":
         visualize_sound_in_realtime()
     elif selected_box == "Visualize Sound - YouTube":
         visualize_youtube_video()
