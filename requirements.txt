@@ -7,5 +7,5 @@ Pillow==9.0.1
 pydub==0.25.1
 streamlit==1.3.1
 streamlit-webrtc==0.35.1
-pytube==12.0.0
+git+https://github.com/anirudhtopiwala/pytube.git
 moviepy==1.0.2
