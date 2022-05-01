@@ -13,13 +13,15 @@
 A complete list of all the projects can be found below. This is meant to be a living page and new projects will be added over time.
 All the projects are also available on a dedicated instagram handle [*visualize_sound.*](https://www.instagram.com/visualize_sound/)
 
-
-1. [Seattle Great Wheel](https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild/blob/main/projects/PROJECTS.md#Seattle-Great-Wheel)
-2. [Instagram or Snapchat Filter?](https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild/blob/main/projects/PROJECTS.md#Instagram-or-Snapchat-Filter)
-3. [Hiking Among The Trees](https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild/blob/main/projects/PROJECTS.md#Hiking-Among-The-Trees)
-4. [The Mighty Multnomah Falls](https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild/blob/main/projects/PROJECTS.md#The-Mighty-Multnomah-Falls)
-5. [Wine o'Clock](https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild/blob/main/projects/PROJECTS.md#wine-oclock)
-6. [Buzzing Bulb](https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild/blob/main/projects/PROJECTS.md#buzzing-bulb)
+<!-- omit in toc -->
+  - [Projects](#projects)
+    - [Seattle Great Wheel](#seattle-great-wheel)
+    - [Instagram or Snapchat Filter?](#instagram-or-snapchat-filter)
+    - [Hiking Among The Trees](#hiking-among-the-trees)
+    - [The Mighty Multnomah Falls](#the-mighty-multnomah-falls)
+    - [Wine o'Clock](#wine-oclock)
+    - [Buzzing Bulb](#buzzing-bulb)
+  - [Contact Me](#contact-me)
 
 ### Seattle Great Wheel
 Giving a 360 view of Seattle, the ferry wheel gives outstanding views of the city at 60 ft elevation right above the Puget Sound. Although, its real beauty shines up in the night. Right next to the wheel is the Historic Carousel and Wings Over Washington. These landmarks are the first thing that comes to mind and when thinking of Seattle and so I wanted to merge these into one picture. The sound from the carousel varies the brightness of the amazing lights on the wheel making the image come alive. Also don't forget to admire at the reflection of the lights in the water.
@@ -41,19 +43,19 @@ An early morning hike on the Mirror Lake trail in the woods of Mount Hood, Orego
 Get exclusive access to the original HD picture along with the sound of the chirping birds used to make this art. <a href="https://opensea.io/assets/0x495f947276749ce646f68ac8c248420045cb7b5e/46670013259754365806976296485688128176995984954052073858673724126075602075649/" title="Buy on OpenSea" target="_blank"><img style="width:55px; border-radius:2px; box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);" src="https://storage.googleapis.com/opensea-static/Logomark/Badge%20-%20Available%20On%20-%20Dark.png" alt="OpenSea" /></a>
 
 
-## The Mighty Multnomah Falls
+### The Mighty Multnomah Falls
 Being the tallest waterfall in Oregon, listen in on 923 gallons of water falling over a height of 620 feet every second. The sound from the waterfall varies the brightness of the waterfall making the image come alive.
 
 [![Image](https://img.youtube.com/vi/YdY4I7n0Cpw/0.jpg)](https://www.instagram.com/p/CcPhdr0l2MC/)
 
 Get exclusive access to the original HD picture along with the sound of Multnomah Falls used to make this art. <a href="https://opensea.io/assets/0x495f947276749ce646f68ac8c248420045cb7b5e/46670013259754365806976296485688128176995984954052073858673724124976090447873/" title="Buy on OpenSea" target="_blank"><img style="width:55px; border-radius:2px; box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);" src="https://storage.googleapis.com/opensea-static/Logomark/Badge%20-%20Available%20On%20-%20Dark.png" alt="OpenSea" /></a>
 
-## Wine o'Clock
+### Wine o'Clock
 62 miles from downtown Portland, nestled right by the town of Mount Hood River is a very cute little winery Cathedral Ridge Winery. This picture is from a wine tasting one summer evening with a great ambiance. The beats from the ambiance vary the brightness of the beautiful amber string lights making the image come alive.
 
 [![Image](https://img.youtube.com/vi/8IzFLgQkz20/0.jpg)](https://www.instagram.com/p/Cc_i-LTlynF/)
 
-## Buzzing Bulb
+### Buzzing Bulb
 Ever wondered why a bulb buzzes? This is mostly observed in dimmers where the bulb is constantly switched “on/off” to produce the dimming effect. As an effect of this, there is a constant application and removal of voltage which excites and cools the filament, causing vibration, which leads to the buzzing sound. Look closely at the filament in the picture. The brightness of the filament changes with the amplitude of the buzzing sound making the image come alive.
 
 [![Image](https://img.youtube.com/vi/tAyQpCUXpgk/0.jpg)](https://www.instagram.com/p/Ccrs7Mqlfas/)

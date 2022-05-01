@@ -27,14 +27,17 @@ This app also doubles as a way to extract and download audio from any YouTube vi
 ## Projects
 Below are some projects that demonstrates how sound can be visualized in an image. The idea of visualizing sound is not limited to capturing the source of the sound but can be extended to capture any meaningful sound and visualize it in the picture. Think of it like tagging sound in an image instead of a location, but in a more visual way.
 
-1. [The Mighty Multnomah Falls](https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild#The-Mighty-Multnomah-Falls)
-2. [Hiking Among The Trees](https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild#Hiking-Among-The-Trees)
-3. [Instagram or Snapchat Filter?](https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild#Instagram-or-Snapchat-Filter)
+  - [Projects](#projects)
+    - [The Mighty Multnomah Falls](#the-mighty-multnomah-falls)
+    - [Hiking Among The Trees](#hiking-among-the-trees)
+    - [Instagram or Snapchat Filter?](#instagram-or-snapchat-filter)
+  - [Run the App Locally](#run-the-app-locally)
+  - [Contact Me](#contact-me)
 
 
 ***A complete list of projects can be found [here](https://github.com/anirudhtopiwala/Visualize_Sound_In_The_Wild/blob/main/projects/PROJECTS.md#Visualizing-Sound-In-The-Wild) and in the YouTube playlist [Visualize Sound Projects](https://www.instagram.com/visualize_sound/)***.
 
-## The Mighty Multnomah Falls
+### The Mighty Multnomah Falls
 Being the tallest waterfall in Oregon, listen in on 923 gallons of water falling over a height of 620 feet every second. The sound from the waterfall varies the brightness of the waterfall making the image come alive.
 
 [![Image](https://img.youtube.com/vi/YdY4I7n0Cpw/0.jpg)](https://www.youtube.com/watch?v=YdY4I7n0Cpw)
