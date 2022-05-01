@@ -581,6 +581,12 @@ def welcome() -> None:
     st.write(
         "These options can be selected in the sidebar which is available in the top left corner of the screen."
     )
+    st.markdown(
+        """
+        ## Live Demo of the App
+        [![Image](https://img.youtube.com/vi/9ukxZZZUCMQ/0.jpg)](https://www.youtube.com/watch?v=9ukxZZZUCMQ)
+        """
+    )
 
     # Play examples !!!
     st.subheader("Examples in the Wild")
